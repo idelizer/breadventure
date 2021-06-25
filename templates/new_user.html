@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Bread Journal!{% endblock %}
+
+{% block body %}
+    <h1>Make an account!</h1>
+
+    <form action='/new-user' method='POST'>
+        <label>Username.</label>
+        <input type="username" name="username">
+        <label>Email.</label>
+        <input type="text" name="email"> 
+        <label>Password.</label>
+        <input type="password" name="password">
+        <button type='submit'>Make my account!</button> 
+    </form>
+        
+{% endblock %}

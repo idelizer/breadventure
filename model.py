@@ -1,6 +1,7 @@
 """Models for bread baking journal."""
 
 from flask_sqlalchemy import SQLAlchemy
+import requests
 
 db = SQLAlchemy()
 
@@ -9,7 +10,7 @@ class User(db.Model):
 
     __tablename__ = "users"
 
-    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(30), unique=True, nullable=False)
     password = db.Column(db.String(30), nullable=False)
@@ -17,7 +18,7 @@ class User(db.Model):
     recipes = db.relationship("Recipe")
 
     def __repr__(self):
-        return f'<User id={self.user_id} email={self.email}>'
+        return f'<User id={self.id} email={self.email}>'
 
 
 class Recipe(db.Model):
@@ -25,31 +26,31 @@ class Recipe(db.Model):
 
     __tablename__ = "recipes"
     
-    recipe_id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.Date, nullable=False)
     instructions = db.Column(db.Text, nullable=False)
     is_starter_feeding = db.Column(db.Boolean, nullable=False)
 
+    name = db.Column(db.String(50), nullable=True)
     observations = db.Column(db.Text, nullable=True)
     baking_time = db.Column(db.Integer, nullable=True)
     baking_temp = db.Column(db.Integer, nullable=True)
-    ambient_temp = db.Column(db.Integer, nullable=True)
 
     user = db.relationship("User")
-    user_ingredients = db.relationship("UserIngredient")
+    recipes_ingredients = db.relationship("RecipeIngredient")
 
     def __repr__(self):
-        return f'<Recipe id={self.recipe_id} date={self.date}>'
+        return f'<Recipe id={self.id} date={self.date}>'
 
-class UserIngredient(db.Model):
+class RecipeIngredient(db.Model):
     """Middle table between a recipe and an ingredient indicating amount of ingredient in said recipe."""
 
-    __tablename__ = "user_ingredients"
+    __tablename__ = "recipes_ingredients"
 
-    user_ingredient_id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.recipe_id'), nullable=False)
-    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.ingredient_id'), nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
+    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id'), nullable=False)
     amount_in_grams = db.Column(db.Integer, nullable=False)
 
     recipe = db.relationship("Recipe")
@@ -63,13 +64,13 @@ class Ingredient(db.Model):
 
     __tablename__ = "ingredients"
 
-    ingredient_id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
     name = db.Column(db.String(30), nullable=False)
 
-    user_ingredients = db.relationship("UserIngredient")
+    recipes_ingredients = db.relationship("RecipeIngredient")
 
     def __repr__(self):
-        return f'<Ingredient id={self.ingredient_id} name={self.name}>'
+        return f'<Ingredient id={self.id} name={self.name}>'
 
 
 def connect_to_db(app, db_uri='postgresql:///breadjournal', echo=True):
