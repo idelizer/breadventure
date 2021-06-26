@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to Bread Journal!{% endblock %}
+{% block title %}Create a new bread recipe!{% endblock %}
 
 {% block body %}
-    <h1>Make an account!</h1>
+    <h1>Please input your current experiment.</h1>
 
-    <form action='/register-user' method='POST'>
+    <form action='/create-recipe' method='POST'>
         <label>Username.</label>
         <input type="username" name="username">
         <label>Email.</label>
@@ -14,5 +14,7 @@
         <input type="password" name="password">
         <button type='submit'>Make my account!</button> 
     </form>
+
+    <!-- could have N/A radio button option for nullable fields, makes it NONE -->
         
 {% endblock %}

@@ -25,7 +25,7 @@ def get_user_by_id(user_id):
 def get_user_by_email(email):
     """Get a user object by its email."""
 
-    return User.query.get(email)
+    return User.query.filter(User.email == email).first()
 
 def create_recipe(user_id, date, instructions, is_starter_feeding=False, name=None, observations=None, baking_time=None, baking_temp=None):
     """Make a new recipe."""
@@ -49,7 +49,11 @@ def get_recipes_by_id(recipe_id):
 
     return Recipe.query.get(recipe_id)
 
-# get recipes by user id?
+def get_recipes_by_user(user_id):
+    """Return all recipes given a user_id."""
+
+    return Recipe.query.filter(User.id == user_id).first()
+
 # ... how does search function work here?
 
 def create_starter_feeding(user_id, date, instructions, is_starter_feeding=True, name=None, observations=None, baking_time=None, baking_temp=None):

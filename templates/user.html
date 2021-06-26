@@ -3,9 +3,12 @@
 {% block title %}Welcome to Bread Journal!{% endblock %}
 
 {% block body %}
-    <h1>Welcome!</h1>
+    <h1>Welcome! {{ username }}</h1>
+
 
     <a href="/test-recipe">Test a recipe.</a>
     <a href="/feed-starter">Feed your starter.</a>
+
+    <!-- loop through users recipes, display all, label all containers -->
         
 {% endblock %}
