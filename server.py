@@ -54,9 +54,9 @@ def new_user():
 def register_new_user():
     """Process form from new user."""
 
-    username = request.form['username']
-    email = request.form['email']
-    password = request.form['password']
+    username = request.form.get['username']
+    email = request.form.get['email']
+    password = request.form.get['password']
 
     # check if user already exists, flash message + redirect to top
     # how to handle unique fields
@@ -67,24 +67,56 @@ def register_new_user():
     return redirect('/home')
     
 
-@app.route('/make-recipe')
-def make_recipe():
+@app.route('/test-recipe')
+def design_recipe():
     """View form for user to input new recipe details."""
 
     return render_template('recipe_form.html')
 
 # one route to show form, one route to process form
 
-@app.route('/create-recipe', methods=['GET', 'POST'])
+@app.route('/test-recipe', methods=['GET', 'POST']) # just post??
 def create_new_recipe():
-    """Process details from new recipe form, add to database."""
-    # function arguments are usually query parameters
+    """Process form from new recipe form, add to database."""
 
     # get user id from session
+    user_id = session["user_id"]
+
     # get recipe attributes from form
         # conditional attributes? if they exist, set them
+    date = request.form.get('date')
+    instructions = request.form['instructions']
+    name = request.form.get('name', None)
+    observations = request.form['observations']
+    baking_time = request.form['baking-time']
+    baking_temp = request.form['baking-temp']
 
-    # commit to database 
+    print(name)
+    print(observations)
+    print(baking_time)
+    print(baking_temp)
+
+    # optional_details set to none if empty string
+    name = str(name or None)
+    observations = str(observations or None)
+    baking_time = str(baking_time or None)
+    baking_temp = str(baking_temp or None)
+
+    print()
+    print(name)
+    print(observations)
+    print(baking_time)
+    print(baking_temp)
+
+    if baking_time == None:
+        print("None")
+    if baking_time == "":
+        print("empty string")
+
+    return "yes hello"
+
+    # create + commit to database 
+    # new_recipe = create_recipe(user_id, date, instructions, is_starter_feeding=False, name=None, observations=None, baking_time=None, baking_temp=None):
 
     # return redirect 
 
