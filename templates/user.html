@@ -9,6 +9,13 @@
     <a href="/test-recipe">Test a recipe.</a>
     <a href="/feed-starter">Feed your starter.</a>
 
+    {% for recipe in recipes %}
+        <ul>Recipe Details</ul>
+            <li>{{ recipe.date }}</li>
+            <li>{{ recipe.instructions }}</li>
+            <li>{{ recipe.name }}</li>
+    {% endfor %}
+
     <!-- loop through users recipes, display all, label all containers -->
         
 {% endblock %}

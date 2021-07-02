@@ -27,12 +27,12 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
-def create_recipe(user_id, date, instructions, is_starter_feeding=False, name=None, observations=None, baking_time=None, baking_temp=None):
+def create_recipe(user_id, date, instructions, name=None, observations=None, baking_time=None, baking_temp=None, is_starter_feeding=False):
     """Make a new recipe."""
     # Required arguments: user_id, date, instructions, is_starter_feeding
     # Optional parameters: name, observations, baking_time, baking_temp, ambient_temp
 
-    recipe = Recipe(user_id=user_id, date=date, instructions=instructions, is_starter_feeding=is_starter_feeding, name=name, observations=observations, baking_time=baking_time, baking_temp=baking_temp)
+    recipe = Recipe(user_id=user_id, date=date, instructions=instructions, name=name, observations=observations, baking_time=baking_time, baking_temp=baking_temp, is_starter_feeding=is_starter_feeding)
 
     db.session.add(recipe)
     db.session.commit()
@@ -52,14 +52,14 @@ def get_recipes_by_id(recipe_id):
 def get_recipes_by_user(user_id):
     """Return all recipes given a user_id."""
 
-    return Recipe.query.filter(User.id == user_id).first()
+    return Recipe.query.filter(User.id == user_id).all()
 
 # ... how does search function work here?
 
-def create_starter_feeding(user_id, date, instructions, is_starter_feeding=True, name=None, observations=None, baking_time=None, baking_temp=None):
+def create_starter_feeding(user_id, date, instructions, name=None, observations=None, baking_time=None, baking_temp=None, is_starter_feeding=True):
     """Create starter feeding, a recipe object where is_starter_feeding is set to True."""
 
-    starter_feeding = Recipe(user_id=user_id, date=date, instructions=instructions, is_starter_feeding=is_starter_feeding, name=name, observations=observations, baking_time=baking_time, baking_temp=baking_temp)
+    starter_feeding = Recipe(user_id=user_id, date=date, instructions=instructions, name=name, observations=observations, baking_time=baking_time, baking_temp=baking_temp, is_starter_feeding=is_starter_feeding)
 
     db.session.add(starter_feeding)
     db.session.commit()

@@ -41,6 +41,7 @@ def user_page():
     
     user = crud.get_user_by_id(session["user_id"])
     recipes = crud.get_recipes_by_user(session["user_id"])
+    print(type(recipes))
 
     return render_template('user.html', username=user.username, recipes=recipes)
 
@@ -86,37 +87,47 @@ def create_new_recipe():
         # conditional attributes? if they exist, set them
     date = request.form.get('date')
     instructions = request.form['instructions']
-    name = request.form.get('name', None)
+    name = request.form.get('name')
     observations = request.form['observations']
     baking_time = request.form['baking-time']
     baking_temp = request.form['baking-temp']
 
-    print(name)
-    print(observations)
-    print(baking_time)
-    print(baking_temp)
+    if name == "":
+        name = None
 
-    # optional_details set to none if empty string
-    name = str(name or None)
-    observations = str(observations or None)
-    baking_time = str(baking_time or None)
-    baking_temp = str(baking_temp or None)
-
-    print()
-    print(name)
-    print(observations)
-    print(baking_time)
-    print(baking_temp)
-
-    if baking_time == None:
-        print("None")
+    if observations == "":
+        observations = None
+    
     if baking_time == "":
-        print("empty string")
+        baking_time = None
 
-    return "yes hello"
+    if baking_temp == "":
+        baking_temp = None
+
+    # print(name)
+    # print(type(name))
+    # print()
+
+    # print(observations)
+    # print(type(observations))
+    # print()
+
+    # print(baking_time)
+    # print(type(baking_time))
+    # print()
+
+    # print(baking_temp)
+    # print(type(baking_temp))
+    # print()
+    flash("Recipe successfully created!")
+
+    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
+    print(new_recipe)
+
+    return redirect('/user')
 
     # create + commit to database 
-    # new_recipe = create_recipe(user_id, date, instructions, is_starter_feeding=False, name=None, observations=None, baking_time=None, baking_temp=None):
+    # 
 
     # return redirect 
 

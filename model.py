@@ -30,12 +30,12 @@ class Recipe(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.Date, nullable=False)
     instructions = db.Column(db.Text, nullable=False)
-    is_starter_feeding = db.Column(db.Boolean, nullable=False)
 
     name = db.Column(db.String(50), nullable=True)
     observations = db.Column(db.Text, nullable=True)
     baking_time = db.Column(db.Integer, nullable=True)
     baking_temp = db.Column(db.Integer, nullable=True)
+    is_starter_feeding = db.Column(db.Boolean, nullable=False)
 
     user = db.relationship("User")
     recipes_ingredients = db.relationship("RecipeIngredient")
