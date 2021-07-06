@@ -51,7 +51,7 @@ def new_user():
 
     return render_template('new_user.html')
 
-@app.route('/register-user', methods=['GET', 'POST'])
+@app.route('/register-user', methods=['POST'])
 def register_new_user():
     """Process form from new user."""
 
@@ -76,7 +76,7 @@ def design_recipe():
 
 # one route to show form, one route to process form
 
-@app.route('/test-recipe', methods=['GET', 'POST']) # just post??
+@app.route('/create-recipe', methods=['POST']) # just post??
 def create_new_recipe():
     """Process form from new recipe form, add to database."""
 
@@ -104,21 +104,6 @@ def create_new_recipe():
     if baking_temp == "":
         baking_temp = None
 
-    # print(name)
-    # print(type(name))
-    # print()
-
-    # print(observations)
-    # print(type(observations))
-    # print()
-
-    # print(baking_time)
-    # print(type(baking_time))
-    # print()
-
-    # print(baking_temp)
-    # print(type(baking_temp))
-    # print()
     flash("Recipe successfully created!")
 
     new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
@@ -126,10 +111,44 @@ def create_new_recipe():
 
     return redirect('/user')
 
-    # create + commit to database 
-    # 
+@app.route('/feed-starter')
+def feed_starter():
+    """View form for user to input starter feeding details."""
 
-    # return redirect 
+    return render_template('feeding-form.html')
+
+@app.route('/create-feeding', methods=['POST'])
+def create_new_feeding():
+    """Process form from new starter feeding form, add to database."""
+
+    user_id = session["user_id"]
+
+    date = request.form.get('date')
+    instructions = request.form['instructions']
+    name = request.form.get('name')
+    observations = request.form['observations']
+    baking_time = request.form['baking-time']
+    baking_temp = request.form['baking-temp']
+
+    if name == "":
+        name = None
+
+    if observations == "":
+        observations = None
+    
+    if baking_time == "":
+        baking_time = None
+
+    if baking_temp == "":
+        baking_temp = None
+
+    flash(f"Starter successfully fed!")
+
+    new_feeding = crud.create_starter_feeding(user_id, date, instructions, name, observations, baking_time, baking_temp)
+    print(new_feeding)
+
+    return redirect('/user')
+
 
 if __name__ == '__main__':
     connect_to_db(app)
