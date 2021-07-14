@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Bread Journal!{% endblock %}
+
+{% block body %}
+  
+    <div class='container'>
+        <ul>Recipe Details</ul>
+            <li>{{ recipe.date }}</li>
+            <li>{{ recipe.instructions }}</li>
+            {% if recipe.name %}
+                <li>{{ recipe.name }}</li>
+            {% endif %}
+            {% if recipe.observations %}
+                <li>{{ recipe.observations }}</li>
+            {% endif %}
+            {% if recipe.baking_time %}
+                <li>{{ recipe.baking_time }}</li>
+            {% endif %}
+            {% if recipe.baking_temp %}
+                <li>{{ recipe.baking_temp }}</li>
+            {% endif %}
+            {% if recipe.is_starter_feeding is true %}
+                <li>Is a starter feeding!</li>
+            {% endif %}
+    </div>
+    <div class='container'>
+        <a href='/user'>Back</a>
+    </div>
+        
+{% endblock %}

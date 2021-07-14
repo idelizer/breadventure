@@ -3,22 +3,19 @@
 {% block title %}Welcome to Bread Journal!{% endblock %}
 
 {% block body %}
-    <h1>Welcome!</h1>
+    <div class='container'>
+        <h1>Welcome!</h1>
+    </div>
 
-    {% if returning_user is false %}
-        <div id='login-error'>
-            <h2>There was a problem with your login!</h2>
-            <h2>Please try again or make a new account.</h2>
-        </div>
-    {% endif %}
-
-    <form action='/login' method='POST'>
-        <label>Email.</label>
-        <input type="text" name="email"> 
-        <label>Password.</label>
-        <input type="password" name="password">
-        <button type='submit'>Log in.</button> 
-        <a href='/new-user'>Make an account.</a>
-    </form>
+    <div class='container'>
+        <form action='/login' method='POST'>
+            <label>Email.</label>
+            <input type="text" name="email"> 
+            <label>Password.</label>
+            <input type="password" name="password">
+            <button type='submit'>Log in.</button> 
+            <a href='/new-user'>Make an account.</a>
+        </form>
+    </div>
         
 {% endblock %}

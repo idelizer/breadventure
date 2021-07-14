@@ -5,3 +5,4 @@ __pycache__
 secrets.sh
 
 spoonacular.py
+cloudinary.py

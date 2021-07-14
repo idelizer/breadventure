@@ -44,7 +44,7 @@ def get_recipes():
 
     return Recipe.query.all()
 
-def get_recipes_by_id(recipe_id):
+def get_recipe_by_id(recipe_id):
     """Return a recipe given its id."""
 
     return Recipe.query.get(recipe_id)
@@ -55,6 +55,12 @@ def get_recipes_by_user(user_id):
     return Recipe.query.filter(User.id == user_id).all()
 
 # ... how does search function work here?
+# search through entire table
+# or add special indexes for text search as opposed to exact searches (regex)
+# specify how search term relates to table item
+# substring matches, text pattern operations
+# function for each table per each function
+# or query that unions all things I want to search
 
 def create_starter_feeding(user_id, date, instructions, name=None, observations=None, baking_time=None, baking_temp=None, is_starter_feeding=True):
     """Create starter feeding, a recipe object where is_starter_feeding is set to True."""

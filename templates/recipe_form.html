@@ -3,24 +3,27 @@
 {% block title %}Create a new bread recipe!{% endblock %}
 
 {% block body %}
-    <h1>Please input your current experiment.</h1>
+    <div class='container'>
+        <h1>Please input your current experiment.</h1>
+    </div>
 
-    <form action='/create-recipe' method='POST'>
-        <label>Date.</label>
-        <input type="date" name="date" required>
-        <label>Instructions.</label>
-        <input type="text" name="instructions" required> 
-        <label>Name of your recipe.</label>
-        <input type="text" name="name">
-        <label>Observations.</label>
-        <input type="text" name="observations">
-        <label>Baking time.</label>
-        <input type="number" name="baking-time">
-        <label>Baking temperature.</label>
-        <input type="number" name="baking-temp">
-        <button type='submit'>Experiment!</button>  
-    </form>
-
+    <div class='container'>
+        <form action='/create-recipe' method='POST'>
+            <label>Date.</label>
+            <input type="date" name="date" required>
+            <label>Instructions.</label>
+            <input type="text" name="instructions" required> 
+            <label>Name of your recipe.</label>
+            <input type="text" name="name">
+            <label>Observations.</label>
+            <input type="text" name="observations">
+            <label>Baking time.</label>
+            <input type="number" name="baking-time">
+            <label>Baking temperature.</label>
+            <input type="number" name="baking-temp">
+            <button type='submit'>Experiment!</button>  
+        </form>
+    </div>
     <!-- could have N/A radio button option for nullable fields, makes it NONE -->
         
 {% endblock %}

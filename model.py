@@ -14,6 +14,11 @@ class User(db.Model):
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(30), unique=True, nullable=False)
     password = db.Column(db.String(30), nullable=False)
+    # standard for storing passwords is hashing
+    # one way encryption, not decryptable
+    # check user input, get hash, check if hashes match
+    # then hackers still wouldn't have pws
+    # find library to hash them, hash when pw is set
 
     recipes = db.relationship("Recipe")
 
