@@ -92,5 +92,22 @@ def get_ingredient_by_id(ingredient_id):
 
     return Ingredient.query.get(ingredient_id)
 
+def create_amount(recipe_id, ingredient_id, amount_in_grams):
+    """Set amount for an ingredient in a user's recipe."""
 
+    amount = RecipeIngredient(recipe_id=recipe_id, ingredient_id=ingredient_id, amount_in_grams=amount_in_grams)
+
+    db.session.add(amount)
+    db.session.commit()
+
+    return amount
+
+def get_amount_by_id(amount_id):
+    """Get an amount by its id."""
+
+    return RecipeIngredient.query.get(amount_id)
+
+def get_amounts_by_recipe(recipe_id):
+
+    return RecipeIngredient.query.filter(Recipe.id == recipe_id).all()
 

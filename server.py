@@ -49,9 +49,11 @@ def display_recipe_details(recipe_id):
 
     # get recipe by id
     recipe = crud.get_recipe_by_id(recipe_id)
+    amounts = crud.get_amounts_by_recipe(recipe_id)
+
     # get ingredients
 
-    return render_template('recipe_details.html', recipe=recipe) # pass in ingredients
+    return render_template('recipe_details.html', recipe=recipe, amounts=amounts) # pass in ingredients
 
 @app.route('/new-user')
 def new_user():

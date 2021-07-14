@@ -25,6 +25,13 @@
             {% endif %}
     </div>
     <div class='container'>
+        <ul>Ingredients</ul>
+            {% for amount in amounts %}
+                <li>{{ amount.ingredient.name }}</li>
+                <li>{{ amount.amount_in_grams }}</li>
+            {% endfor %}
+    </div>
+    <div class='container'>
         <a href='/user'>Back</a>
     </div>
         

@@ -18,16 +18,31 @@ model.db.create_all()
 #     bread_data = json.loads(x.read())
 
 
-# users get seeded randomly
-for n in range(10):
+# seeding users incrementally
+for n in range(1, 11):
     username = f"user{n}"
     email = f"user{n}@test.com"
     password = "test"
 
     new_user = crud.create_user(username, email, password)
 
-# recipes get seeded randomly
-    # including ingredients
-# ingredients available get seeded from json?
+# seeding ingredients from list
+    # later seed from data file? json? sql?
+ingredient_list = ["flour", "salt", "water", "starter", "yeast",]
 
-# how to seed middle table?
+for ingr in ingredient_list:
+    added_ingr = crud.create_ingredient(ingr)
+
+# seeding recipes
+recipe1 = crud.create_recipe(1, '01-01-2011', 'instructions1', 'name1', 'observations1', 11, 111)
+recipe2 = crud.create_recipe(1, '02-02-2022', 'instructions2', None, 'observations2', None, 222)
+recipe3 = crud.create_recipe(1, '03-03-2033', 'instructions3')
+
+feeding1 = crud.create_starter_feeding(1, '04-04-2044', 'instructions4', 'name4', None, 44, None)
+
+# seeding amounts (middle table between recipe and ingredients)
+    # set amounts for first recipe of first user
+amount1flour = crud.create_amount(1, 1, 400)
+amount2salt = crud.create_amount(1, 2, 10)
+amount3water = crud.create_amount(1, 3, 300)
+amount4starter = crud.create_amount(1, 4, 100)
