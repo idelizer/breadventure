@@ -1,6 +1,6 @@
 """Server for bread journal app."""
 
-from flask import Flask, render_template, request, redirect, flash, session
+from flask import Flask, render_template, request, redirect, flash, session, jsonify
 from model import connect_to_db
 import crud
 import os
@@ -49,9 +49,8 @@ def display_recipe_details(recipe_id):
 
     # get recipe by id
     recipe = crud.get_recipe_by_id(recipe_id)
+    # get ingredients and their amounts
     amounts = crud.get_amounts_by_recipe(recipe_id)
-
-    # get ingredients
 
     return render_template('recipe_details.html', recipe=recipe, amounts=amounts) # pass in ingredients
 
@@ -76,13 +75,24 @@ def register_new_user():
     flash('Success! Account made. Please log in.')
 
     return redirect('/home')
+
+
+@app.route('/get-ingredients')
+def convert_all_ingr_to_json():
+    """Convert ingredient object to JSON to pass to javascript."""
+
+    ingredients = crud.get_ingredients()
     
+    return jsonify({'ingredients': [ingredient.name for ingredient in ingredients]})
+     
 
 @app.route('/test-recipe')
 def design_recipe():
     """View form for user to input new recipe details."""
 
-    return render_template('recipe_form.html')
+    ingredients = crud.get_ingredients()
+
+    return render_template('recipe_form.html', ingredients=ingredients)
 
 # one route to show form, one route to process form
 
@@ -102,6 +112,26 @@ def create_new_recipe():
     baking_time = request.form['baking-time'] or None
     baking_temp = request.form['baking-temp'] or None
 
+    flash("Recipe successfully created!")
+
+    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
+    print(new_recipe)
+
+    # amount 1-20 = request.form['amount1'] x 20 --> make into list?
+    # dropdown/select menu input 1-20 OR text/string input 1-20 
+
+    # put function in crud, depending on data type passed in- list of strings?
+    # for every name (from either input) 1-20:
+        # if in db
+            # get id, add to list
+        # if not in db
+            # add to db
+            # get id, add to list
+        # --> make into list
+
+    # for num in num_of_inputs (up to 20):
+        #new_ingr = crud.create_amount(new_recipe.id, ingredient_id_list[num], amount_list[num])
+        
     # how would dynamic ingredients list be returned?
     # while loop get ingredient id from ingredient table
         # using user id and ingredient id, add amount to RecipeIngredient table
@@ -111,11 +141,6 @@ def create_new_recipe():
     # is ingredients table solid state?? Users click on options available
     # in db columns to add, otherwise have to character match
     # how to do custom inputs?? standardize string format, check if in db, if not, create column
-
-    flash("Recipe successfully created!")
-
-    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
-    print(new_recipe)
 
     return redirect('/user')
 
