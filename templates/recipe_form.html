@@ -10,17 +10,17 @@
     <div class='container'>
         <form action='/create-recipe' method='POST' id='create-recipe-form'>
             <label>Date.</label>
-            <input type="date" name="date" required>
+            <input type="date" id="date" name="date" required>
             <label>Instructions.</label>
-            <input type="text" name="instructions" required> 
+            <input type="text" id="instructions" name="instructions" required> 
             <label>Name of your recipe.</label>
-            <input type="text" name="name">
+            <input type="text" id="name" name="name">
             <label>Observations.</label>
-            <input type="text" name="observations">
+            <input type="text" id="observations" name="observations">
             <label>Baking time.</label>
-            <input type="number" name="baking-time">
+            <input type="number" id="baking-time" name="bakingtime">
             <label>Baking temperature.</label>
-            <input type="number" name="baking-temp">
+            <input type="number" id="baking-temp" name="bakingtemp">
 
             <label>Ingredients</label>
             <button type="button" id="add-ingredients">Add Ingredients</button>
@@ -40,3 +40,7 @@
  <!-- {% for ingredient in ingredients %}
                 <option value="{{ ingredient }}">{{ ingredient }}</option>
             {% endfor %} -->
+
+<!-- for uploading pictures, use html input attribute accept="image/*" -->
+
+<!-- would input attribute form="create-recipe-form" allow all inputs to be grabbed from backend? -->

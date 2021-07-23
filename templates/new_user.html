@@ -3,18 +3,18 @@
 {% block title %}Welcome to Bread Journal!{% endblock %}
 
 {% block body %}
-    <div class='container'>
+    <div class="container">
         <h1>Make an account!</h1>
     </div>
-    <div class='container'>
+    <div class="container">
         <form action='/register-user' method='POST'>
-            <label>Username.</label>
+            <label for="username">Username.</label>
             <input type="username" name="username" placeholder="Username" required>
-            <label>Email.</label>
-            <input type="text" name="email" required> 
-            <label>Password.</label>
+            <label for="email">Email.</label>
+            <input type="email" name="email" required> 
+            <label for="password">Password.</label>
             <input type="password" name="password" required>
-            <button type='submit'>Make my account!</button> 
+            <button type="submit">Make my account!</button> 
         </form>
     </div>       
     

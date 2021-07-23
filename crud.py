@@ -52,7 +52,7 @@ def get_recipe_by_id(recipe_id):
 def get_recipes_by_user(user_id):
     """Return all recipes given a user_id."""
 
-    return Recipe.query.filter(User.id == user_id).all()
+    return Recipe.query.filter(Recipe.user_id == user_id).all()
 
 # ... how does search function work here?
 # search through entire table
@@ -109,5 +109,5 @@ def get_amount_by_id(amount_id):
 
 def get_amounts_by_recipe(recipe_id):
 
-    return RecipeIngredient.query.filter(Recipe.id == recipe_id).all()
+    return RecipeIngredient.query.filter(RecipeIngredient.recipe_id == recipe_id).all()
 

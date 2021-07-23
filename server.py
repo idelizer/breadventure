@@ -1,6 +1,6 @@
 """Server for bread journal app."""
 
-from flask import Flask, render_template, request, redirect, flash, session, jsonify
+from flask import Flask, render_template, request, redirect, flash, session, jsonify, json
 from model import connect_to_db
 import crud
 import os
@@ -52,6 +52,8 @@ def display_recipe_details(recipe_id):
     # get ingredients and their amounts
     amounts = crud.get_amounts_by_recipe(recipe_id)
 
+    print(amounts)
+
     return render_template('recipe_details.html', recipe=recipe, amounts=amounts) # pass in ingredients
 
 @app.route('/new-user')
@@ -96,53 +98,42 @@ def design_recipe():
 
 # one route to show form, one route to process form
 
-@app.route('/create-recipe', methods=['POST']) # just post??
+@app.route('/create-recipe', methods=['POST'])
 def create_new_recipe():
     """Process form from new recipe form, add to database."""
 
     # get user id from session
     user_id = session["user_id"]
 
-    # get recipe attributes from form
-        # conditional attributes? if they exist, set them
-    date = request.form['date'] 
-    instructions = request.form['instructions'] 
-    name = request.form['name'] or None
-    observations = request.form['observations'] or None
-    baking_time = request.form['baking-time'] or None
-    baking_temp = request.form['baking-temp'] or None
+    date = request.json.get("date") 
+    instructions = request.json.get("instructions")
+    name = request.json.get("name") or None
+    observations = request.json.get("observations") or None
+    baking_time = request.json.get("bakingTime") or None
+    baking_temp = request.json.get("bakingTemp") or None
 
-    flash("Recipe successfully created!")
+    # # add ingredients to middle table
+    # ingredients = json_recipe[6]["ingredients"] or None
 
     new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
     print(new_recipe)
 
-    # amount 1-20 = request.form['amount1'] x 20 --> make into list?
-    # dropdown/select menu input 1-20 OR text/string input 1-20 
+    # flash isn't showing up after javascript redirect
+    # promise isn't fulfilled by the time redirect happens?
+    flash("Recipe successfully created!")
 
-    # put function in crud, depending on data type passed in- list of strings?
-    # for every name (from either input) 1-20:
-        # if in db
-            # get id, add to list
-        # if not in db
-            # add to db
-            # get id, add to list
-        # --> make into list
+    # get recipe attributes from form
+        # conditional attributes? if they exist, set them
+    # date = request.form['date'] 
+    # instructions = request.form['instructions'] 
+    # name = request.form['name'] or None
+    # observations = request.form['observations'] or None
+    # baking_time = request.form['baking-time'] or None
+    # baking_temp = request.form['baking-temp'] or None
 
-    # for num in num_of_inputs (up to 20):
-        #new_ingr = crud.create_amount(new_recipe.id, ingredient_id_list[num], amount_list[num])
-        
-    # how would dynamic ingredients list be returned?
-    # while loop get ingredient id from ingredient table
-        # using user id and ingredient id, add amount to RecipeIngredient table
-
-    # new_ingredients = create crud join query that given a user id and/or recipe id, return joined ingredient name and amount
-
-    # is ingredients table solid state?? Users click on options available
-    # in db columns to add, otherwise have to character match
-    # how to do custom inputs?? standardize string format, check if in db, if not, create column
-
-    return redirect('/user')
+    print("fetch is happening")
+    # print(type(json_recipe))
+    return {"success": "success"}
 
 @app.route('/feed-starter')
 def feed_starter():
