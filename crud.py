@@ -92,6 +92,11 @@ def get_ingredient_by_id(ingredient_id):
 
     return Ingredient.query.get(ingredient_id)
 
+def get_ingredient_by_name(ingredient_name):
+    """Get an ingredient given its id."""
+
+    return Ingredient.query.filter(Ingredient.name == ingredient_name).first()
+
 def create_amount(recipe_id, ingredient_id, amount_in_grams):
     """Set amount for an ingredient in a user's recipe."""
 

@@ -1,13 +1,17 @@
 "use strict";
 console.log('JS IS WORKING')
 
+ // create functions to break this up further?
+
 const addIngredients = document.getElementById("add-ingredients");
 const ingredientInput = document.getElementById("ingredients-input");
 const ingredientsTable = document.getElementById("ingredients-table");
 const dbIngredients = [];
 
 // inputted ingr/amounts for html display and pass to backend as json on submit
-// eg [{ingredientName: "flour", ingredientAmount: '100'}, {ingredientName: "water", ingredientAmount: '100'}]
+// array: [{ingredientName: "flour", ingredientAmount: '100'}, {ingredientName: "water", ingredientAmount: '100'}]
+// dict: {"flour": 10, "water": 10, "love": 10}
+
 const newRecipeIngredients = [];
 // obj: const newRecipeIngredients = {};
 
@@ -42,7 +46,6 @@ const generateTable = (obj, elem) => {
     elem.innerHTML = headers + allRowsStr
 };
 
-
 // add an inputted ing/amount to newRecipeIngredients array
 // const pushIngrAmount = (obj) => {
     
@@ -73,52 +76,51 @@ addIngredients.addEventListener('click', () => {
 
         inputIngredient.value = ""
         inputAmount.value = ""
-
-        // create functions to break this up further?
-
-        document.getElementById("create-recipe-form").addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        
-            // grab all html fields
-            //const date = evt.target.elements.date.value;
-
-            const recipe = {
-                date: document.getElementById("date").value,
-                instructions: document.getElementById("instructions").value,
-                name: document.getElementById("name").value,
-                observations: document.getElementById("observations").value,
-                bakingTime: document.getElementById("baking-time").value,
-                bakingTemp: document.getElementById("baking-temp").value,
-                // ingredients: newRecipeIngredients
-            }
-
-            fetch("/create-recipe", {
-                method: "POST",
-                body: JSON.stringify(recipe),
-                headers: {
-                    'Content-Type': 'application/json'
-                  }
-            })
-            // .then(response => response.json())
-            // .then(data => {
-            //     console.log('Success:', data);
-            // })
-            // .catch((error) => {
-            //     console.error('Error:', error)
-            // });
-            
-            // where to put flashed message if fetched route returns promise after redirect?
-            // window.location.assign("/user")
-            // create json object from all fields and newRecipeIngredients
-            // send complete json object to backend via ajax request or fetch
-            // look up json.parse and json.stringify
-            //
-        
-        });
     });
 });
 
+document.getElementById("create-recipe-form").addEventListener('submit', (evt) => {
+    evt.preventDefault();
 
+    // grab all html fields
+    // process empty strings on frontend to send back smaller object
+    //const date = evt.target.elements.date.value;
+
+    const recipe = {
+        date: document.getElementById("date").value,
+        instructions: document.getElementById("instructions").value,
+        name: document.getElementById("name").value,
+        observations: document.getElementById("observations").value,
+        bakingTime: document.getElementById("baking-time").value,
+        bakingTemp: document.getElementById("baking-temp").value,
+        ingredients: newRecipeIngredients
+    }
+
+    console.log(recipe)
+    fetch("/create-recipe", {
+        method: "POST",
+        body: JSON.stringify(recipe),
+        headers: {
+            'Content-Type': 'application/json'
+          }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        window.location.assign("/user");
+    })
+    .catch((error) => {
+        console.error('Error:', error)
+    });
+    
+    // where to put flashed message if fetched route returns promise after redirect?
+    
+    // create json object from all fields and newRecipeIngredients
+    // send complete json object to backend via ajax request or fetch
+    // look up json.parse and json.stringify
+    //
+
+});
 
 
 

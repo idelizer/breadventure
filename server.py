@@ -102,37 +102,64 @@ def design_recipe():
 def create_new_recipe():
     """Process form from new recipe form, add to database."""
 
+    print()
+    print("ROUTE IS PROCESSING FORM Line 106")
+    print()
+
     # get user id from session
     user_id = session["user_id"]
 
+    # parse recipe data for recipe table
     date = request.json.get("date") 
     instructions = request.json.get("instructions")
-    name = request.json.get("name") or None
+    name = request.json.get("name") or None # may not need none with ajax!
     observations = request.json.get("observations") or None
     baking_time = request.json.get("bakingTime") or None
     baking_temp = request.json.get("bakingTemp") or None
+    ingredients = request.json.get("ingredients") or None
+    print()
+    print("line 121")
+    print()
+    # parse ingredients/amounts for middle table
+    ingr_ids = []
+    amounts = []
+    for item in ingredients:
+        ingr = crud.get_ingredient_by_name(item["ingredientName"])
+        ingr_ids.append(ingr.id)
+        amounts.append(item["ingredientAmount"])    
 
-    # # add ingredients to middle table
-    # ingredients = json_recipe[6]["ingredients"] or None
-
+    # add data to recipe table
     new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
-    print(new_recipe)
+    #print(new_recipe)
+
+    # print(ingr_ids)
+    # print(amounts)
+    # new_amounts = []
+
+    # add data to middle table
+    for index, ingr_id in enumerate(ingr_ids):
+        # 3 values I need to commit to my middle table
+        print()
+        print(f"Recipe id {new_recipe.id} for loop {index}")
+        print(f"Ingr id {ingr_id} for loop {index}")
+        print(f"Amount {amounts[index]} for loop {index}")
+        print()
+
+        # new_amount = crud.create_amount(new_recipe.id, ingr_id, amounts[index])
+        # # create_amount(recipe_id, ingredient_id, amount_in_grams)
+        # new_amounts.append(new_amount)
+
+    # print(new_amounts) 
 
     # flash isn't showing up after javascript redirect
     # promise isn't fulfilled by the time redirect happens?
     flash("Recipe successfully created!")
 
-    # get recipe attributes from form
-        # conditional attributes? if they exist, set them
-    # date = request.form['date'] 
-    # instructions = request.form['instructions'] 
-    # name = request.form['name'] or None
-    # observations = request.form['observations'] or None
-    # baking_time = request.form['baking-time'] or None
-    # baking_temp = request.form['baking-temp'] or None
+    print()
+    print("ROUTE HAS PROCESSED FORM")
+    print()
 
-    print("fetch is happening")
-    # print(type(json_recipe))
+    # TO BE FIXED: javascript currently expecting json
     return {"success": "success"}
 
 @app.route('/feed-starter')
