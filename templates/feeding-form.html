@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Please input your current experiment.</h1>
     <div class="container">
-        <form action='/create-feeding' method='POST'>
+        <form action='/create-feeding' method='POST' enctype="multipart/form-data">
             <label>Date.</label>
             <input type="date" name="date" required>
             <label>Instructions.</label>
@@ -19,6 +19,11 @@
             <input type="number" name="baking-time">
             <label>Baking temperature.</label>
             <input type="number" name="baking-temp">
+
+            <!-- cloudinary experiment -->
+            <label for="img">Upload photo.</label>
+            <input type="file" id="img" name="img" accept="image/*">
+
             <button type='submit'>Experiment!</button>  
         </form>
     </div>

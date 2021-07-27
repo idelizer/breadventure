@@ -81,6 +81,7 @@ addIngredients.addEventListener('click', () => {
 
 document.getElementById("create-recipe-form").addEventListener('submit', (evt) => {
     evt.preventDefault();
+    // experiment with changing submit to button, 
 
     // grab all html fields
     // process empty strings on frontend to send back smaller object
