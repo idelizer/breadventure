@@ -94,10 +94,12 @@ document.getElementById("create-recipe-form").addEventListener('submit', (evt) =
         observations: document.getElementById("observations").value,
         bakingTime: document.getElementById("baking-time").value,
         bakingTemp: document.getElementById("baking-temp").value,
+        feeding: document.getElementById("feeding").checked,
         ingredients: newRecipeIngredients
     }
 
-    console.log(recipe)
+    console.log(recipe);
+
     fetch("/create-recipe", {
         method: "POST",
         body: JSON.stringify(recipe),

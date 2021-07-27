@@ -121,6 +121,11 @@ def create_new_recipe():
     baking_time = request.json.get("bakingTime") or None
     baking_temp = request.json.get("bakingTemp") or None
     ingredients = request.json.get("ingredients") or None
+    is_feeding = request.json.get("feeding")
+
+    print()
+    print(is_feeding)
+    print()
   
     # parse ingredients/amounts for middle table
     ingr_ids = []
@@ -131,7 +136,7 @@ def create_new_recipe():
         amounts.append(item["ingredientAmount"])    
 
     # add data to recipe table
-    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
+    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp, is_feeding)
 
     # add data to middle table
     for index, ingr_id in enumerate(ingr_ids):

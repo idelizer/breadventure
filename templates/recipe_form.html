@@ -9,18 +9,20 @@
 
     <div class='container'>
         <form action='/create-recipe' method='POST' id='create-recipe-form'>
-            <label>Date.</label>
+            <label for="date">Date.</label>
             <input type="date" id="date" name="date" required>
-            <label>Instructions.</label>
+            <label for="instructions">Instructions.</label>
             <input type="text" id="instructions" name="instructions" required> 
-            <label>Name of your recipe.</label>
+            <label for="name">Name of your recipe.</label>
             <input type="text" id="name" name="name">
-            <label>Observations.</label>
+            <label for="observations">Observations.</label>
             <input type="text" id="observations" name="observations">
-            <label>Baking time.</label>
+            <label for="baking-time">Baking time.</label>
             <input type="number" id="baking-time" name="bakingtime">
-            <label>Baking temperature.</label>
+            <label for="baking-temp">Baking temperature.</label>
             <input type="number" id="baking-temp" name="bakingtemp">
+            <label for="feeding">Is this a starter feeding?</label>
+            <input type="checkbox" id="feeding" name="feeding">
 
             <label>Ingredients</label>
             <button type="button" id="add-ingredients">Add Ingredients</button>
