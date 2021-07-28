@@ -121,22 +121,32 @@ def create_new_recipe():
     baking_time = request.form.get("bakingTime") or None
     baking_temp = request.form.get("bakingTemp") or None
     ingredients = request.form.get("ingredients") or None # test whether array needs to be stringified, JSON.stringify(ingredientsArray)
-    img = request.files['img']
-    # img = request.get_data("img")
+    img = request.files.get('img') or None
     is_feeding = request.form.get("feeding") 
     
+    print()
+    print(date)
+    print(instructions)
+    print(name)
+    print(observations)
+    print(baking_time)
+    print(baking_temp)
+    print()
+    print(ingredients)
+    print(type(ingredients)) # currently a string list holding a dict [{}]
     print()
     print(img)
     print(type(img))
     print()
+    print(is_feeding)
+    print(type(is_feeding)) # currently a lowercase string
 
-    print()
-    result = cloudinary.uploader.upload(img, api_key=CLOUDINARY_KEY, api_secret=CLOUDINARY_SECRET, cloud_name=CLOUDINARY_NAME)
-    print(result)
-    img_url = result['secure_url']
-    print(img_url)
-    session["picture"] = img_url
-    print()
+    # if user uploads a picture, get secure url using cloudinary api to be stored in db
+    if img:
+        result = cloudinary.uploader.upload(img, api_key=CLOUDINARY_KEY, api_secret=CLOUDINARY_SECRET, cloud_name=CLOUDINARY_NAME)
+        img_url = result['secure_url']
+    else:
+        img_url = None
   
     # parse ingredients/amounts for middle table
     # ingr_ids = []
@@ -147,7 +157,9 @@ def create_new_recipe():
     #     amounts.append(item["ingredientAmount"])    
 
     # add data to recipe table
-    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
+    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp, img_url)
+    print(new_recipe)
+
 
     # add data to middle table
     # for index, ingr_id in enumerate(ingr_ids):

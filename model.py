@@ -40,6 +40,7 @@ class Recipe(db.Model):
     observations = db.Column(db.Text, nullable=True)
     baking_time = db.Column(db.Integer, nullable=True)
     baking_temp = db.Column(db.Integer, nullable=True)
+    picture = db.Column(db.String, nullable=True)
     is_starter_feeding = db.Column(db.Boolean, nullable=False)
 
     user = db.relationship("User")

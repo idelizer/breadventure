@@ -27,12 +27,12 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
-def create_recipe(user_id, date, instructions, name=None, observations=None, baking_time=None, baking_temp=None, is_starter_feeding=False):
+def create_recipe(user_id, date, instructions, name=None, observations=None, baking_time=None, baking_temp=None, picture=None, is_starter_feeding=False):
     """Make a new recipe."""
     # Required arguments: user_id, date, instructions, is_starter_feeding
     # Optional parameters: name, observations, baking_time, baking_temp, ambient_temp
 
-    recipe = Recipe(user_id=user_id, date=date, instructions=instructions, name=name, observations=observations, baking_time=baking_time, baking_temp=baking_temp, is_starter_feeding=is_starter_feeding)
+    recipe = Recipe(user_id=user_id, date=date, instructions=instructions, name=name, observations=observations, baking_time=baking_time, baking_temp=baking_temp, picture=picture, is_starter_feeding=is_starter_feeding)
 
     db.session.add(recipe)
     db.session.commit()

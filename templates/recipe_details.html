@@ -20,9 +20,11 @@
             {% if recipe.baking_temp %}
                 <li>{{ recipe.baking_temp }}</li>
             {% endif %}
+            {% if recipe.picture %}
+                <img src="{{ recipe.picture }}"</li>
+            {% endif %}
             {% if recipe.is_starter_feeding is true %}
                 <li>Is a starter feeding!</li>
-                <img src="{{ session.picture }}">
             {% endif %}
     </div>
     <div class='container'>
