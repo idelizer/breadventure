@@ -114,33 +114,44 @@ def create_new_recipe():
     user_id = session["user_id"]
 
     # parse recipe data for recipe table
-    date = request.json.get("date") 
-    instructions = request.json.get("instructions")
-    name = request.json.get("name") or None # may not need none with ajax!
-    observations = request.json.get("observations") or None
-    baking_time = request.json.get("bakingTime") or None
-    baking_temp = request.json.get("bakingTemp") or None
-    ingredients = request.json.get("ingredients") or None
-    is_feeding = request.json.get("feeding")
+    date = request.form.get("date") 
+    instructions = request.form.get("instructions")
+    name = request.form.get("name") or None # may not need none with ajax!
+    observations = request.form.get("observations") or None
+    baking_time = request.form.get("bakingTime") or None
+    baking_temp = request.form.get("bakingTemp") or None
+    ingredients = request.form.get("ingredients") or None # test whether array needs to be stringified, JSON.stringify(ingredientsArray)
+    img = request.files['img']
+    # img = request.get_data("img")
+    is_feeding = request.form.get("feeding") 
+    
+    print()
+    print(img)
+    print(type(img))
+    print()
 
     print()
-    print(is_feeding)
+    result = cloudinary.uploader.upload(img, api_key=CLOUDINARY_KEY, api_secret=CLOUDINARY_SECRET, cloud_name=CLOUDINARY_NAME)
+    print(result)
+    img_url = result['secure_url']
+    print(img_url)
+    session["picture"] = img_url
     print()
   
     # parse ingredients/amounts for middle table
-    ingr_ids = []
-    amounts = []
-    for item in ingredients:
-        ingr = crud.get_ingredient_by_name(item["ingredientName"])
-        ingr_ids.append(ingr.id)
-        amounts.append(item["ingredientAmount"])    
+    # ingr_ids = []
+    # amounts = []
+    # for item in ingredients:
+    #     ingr = crud.get_ingredient_by_name(item["ingredientName"])
+    #     ingr_ids.append(ingr.id)
+    #     amounts.append(item["ingredientAmount"])    
 
     # add data to recipe table
-    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp, is_feeding)
+    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp)
 
     # add data to middle table
-    for index, ingr_id in enumerate(ingr_ids):
-        new_amount = crud.create_amount(new_recipe.id, ingr_id, amounts[index])
+    # for index, ingr_id in enumerate(ingr_ids):
+    #     new_amount = crud.create_amount(new_recipe.id, ingr_id, amounts[index])
 
     flash("Recipe successfully created!")
 
@@ -184,9 +195,14 @@ def create_new_feeding():
     new_feeding = crud.create_starter_feeding(user_id, date, instructions, name, observations, baking_time, baking_temp)
     print(new_feeding)
 
+    print()
+    print(type(img))
     result = cloudinary.uploader.upload(img, api_key=CLOUDINARY_KEY, api_secret=CLOUDINARY_SECRET, cloud_name=CLOUDINARY_NAME)
+    print(result)
     img_url = result['secure_url']
+    print(img_url)
     session["picture"] = img_url
+    print()
 
     return redirect('/user')
 

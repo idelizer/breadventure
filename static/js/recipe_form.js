@@ -37,7 +37,7 @@ const generateRow = (obj) => {
     return '<tr><td>' + obj.ingredientName + '</td><td>' + obj.ingredientAmount + '</td></tr>'
 };
 
-// render all inputted ingr/amounts in html display
+// render all inputted ingr/amounts in html display 
 const generateTable = (obj, elem) => {
     const allRows = obj.map(generateRow);
     const allRowsStr = allRows.join("");
@@ -46,10 +46,18 @@ const generateTable = (obj, elem) => {
     elem.innerHTML = headers + allRowsStr
 };
 
-// add an inputted ing/amount to newRecipeIngredients array
-// const pushIngrAmount = (obj) => {
-    
-// };
+// manually create object from object File
+const makeImageObject = (obj) => {
+    const image = {
+        name: obj.name,
+        lastModified: obj.lastModified,
+        lastModifiedDate: obj.lastModifiedDate,
+        size: obj.size,
+        type: obj.type,
+        webkitRelativePath: obj.webkitRelativePath,
+    };
+    return image
+};
 
 // begin adding ingredients (box to add pops up)
 addIngredients.addEventListener('click', () => {
@@ -86,26 +94,35 @@ document.getElementById("create-recipe-form").addEventListener('submit', (evt) =
     // grab all html fields
     // process empty strings on frontend to send back smaller object
     //const date = evt.target.elements.date.value;
+    const img = document.getElementById("img").files[0];
+    console.log(img);
+    console.log(typeof img);
 
-    const recipe = {
-        date: document.getElementById("date").value,
-        instructions: document.getElementById("instructions").value,
-        name: document.getElementById("name").value,
-        observations: document.getElementById("observations").value,
-        bakingTime: document.getElementById("baking-time").value,
-        bakingTemp: document.getElementById("baking-temp").value,
-        feeding: document.getElementById("feeding").checked,
-        ingredients: newRecipeIngredients
-    }
+    // const picture = makeImageObject(img);
+    // console.log(picture);
+    // console.log(typeof picture);
+    console.log("branching...")
+    let formDataRecipe = new FormData();
+        formDataRecipe.append("date", document.getElementById("date").value)
+        formDataRecipe.append("instructions", document.getElementById("instructions").value)
+        formDataRecipe.append("name", document.getElementById("name").value)
+        formDataRecipe.append("observations", document.getElementById("observations").value)
+        formDataRecipe.append("bakingTime", document.getElementById("baking-time").value)
+        formDataRecipe.append("bakingTemp", document.getElementById("baking-temp").value)
+        formDataRecipe.append("feeding", document.getElementById("feeding").checked)
+        formDataRecipe.append("img", img)
+        formDataRecipe.append("ingredients", JSON.stringify(newRecipeIngredients))
 
-    console.log(recipe);
+    // element.files --> array to access index[0]
+
+    console.log(formDataRecipe);
 
     fetch("/create-recipe", {
         method: "POST",
-        body: JSON.stringify(recipe),
-        headers: {
-            'Content-Type': 'application/json'
-          }
+        body: formDataRecipe,
+        // headers: {
+        //     'Content-Type': 'application/json'  // could be application/formdata??
+        //   }
     })
     .then(response => response.json())
     .then(data => {
@@ -116,7 +133,6 @@ document.getElementById("create-recipe-form").addEventListener('submit', (evt) =
         console.error('Error:', error)
     });
     
-    // where to put flashed message if fetched route returns promise after redirect?
     
     // create json object from all fields and newRecipeIngredients
     // send complete json object to backend via ajax request or fetch
