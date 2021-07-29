@@ -120,26 +120,16 @@ def create_new_recipe():
     observations = request.form.get("observations") or None
     baking_time = request.form.get("bakingTime") or None
     baking_temp = request.form.get("bakingTemp") or None
-    ingredients = request.form.get("ingredients") or None # test whether array needs to be stringified, JSON.stringify(ingredientsArray)
+    ingr_str = request.form.get("ingredients") or None # comes in as json str
     img = request.files.get('img') or None
-    is_feeding = request.form.get("feeding") 
-    
-    print()
-    print(date)
-    print(instructions)
-    print(name)
-    print(observations)
-    print(baking_time)
-    print(baking_temp)
-    print()
-    print(ingredients)
-    print(type(ingredients)) # currently a string list holding a dict [{}]
-    print()
-    print(img)
-    print(type(img))
-    print()
-    print(is_feeding)
-    print(type(is_feeding)) # currently a lowercase string
+    is_feeding_str = request.form.get("feeding") # comes in as lowercase str   
+
+    # convert boolean str from form into bool type
+    if is_feeding_str == "false":
+        is_feeding = False
+    elif is_feeding_str == "true":
+        is_feeding = True
+
 
     # if user uploads a picture, get secure url using cloudinary api to be stored in db
     if img:
@@ -148,22 +138,24 @@ def create_new_recipe():
     else:
         img_url = None
   
+    
     # parse ingredients/amounts for middle table
-    # ingr_ids = []
-    # amounts = []
-    # for item in ingredients:
-    #     ingr = crud.get_ingredient_by_name(item["ingredientName"])
-    #     ingr_ids.append(ingr.id)
-    #     amounts.append(item["ingredientAmount"])    
+    ingr_json = json.loads(ingr_str)
+    ingr_ids = []
+    amounts = []
+    for ingredient in ingr_json:
+        ingr = crud.get_ingredient_by_name(ingredient["ingredientName"])
+        ingr_ids.append(ingr.id)
+        amounts.append(int(ingredient["ingredientAmount"]))
+    # maybe create function to process ingr, then use map function? instead of loop?
 
     # add data to recipe table
-    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp, img_url)
+    new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp, img_url, is_feeding)
     print(new_recipe)
 
-
     # add data to middle table
-    # for index, ingr_id in enumerate(ingr_ids):
-    #     new_amount = crud.create_amount(new_recipe.id, ingr_id, amounts[index])
+    for index, ingr_id in enumerate(ingr_ids):
+        new_amount = crud.create_amount(new_recipe.id, ingr_id, amounts[index])
 
     flash("Recipe successfully created!")
 

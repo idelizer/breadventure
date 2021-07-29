@@ -46,19 +46,6 @@ const generateTable = (obj, elem) => {
     elem.innerHTML = headers + allRowsStr
 };
 
-// manually create object from object File
-const makeImageObject = (obj) => {
-    const image = {
-        name: obj.name,
-        lastModified: obj.lastModified,
-        lastModifiedDate: obj.lastModifiedDate,
-        size: obj.size,
-        type: obj.type,
-        webkitRelativePath: obj.webkitRelativePath,
-    };
-    return image
-};
-
 // begin adding ingredients (box to add pops up)
 addIngredients.addEventListener('click', () => {
     // when Add Ingredients clicked, creates new input box and Add button (could use document.createElement)
@@ -92,16 +79,12 @@ document.getElementById("create-recipe-form").addEventListener('submit', (evt) =
     // experiment with changing submit to button, 
 
     // grab all html fields
-    // process empty strings on frontend to send back smaller object
-    //const date = evt.target.elements.date.value;
-    const img = document.getElementById("img").files[0];
-    console.log(img);
-    console.log(typeof img);
+    // process empty strings on frontend to send back smaller object?
 
+    // element.files --> array to access index[0]
     // const picture = makeImageObject(img);
     // console.log(picture);
     // console.log(typeof picture);
-    console.log("branching...")
     let formDataRecipe = new FormData();
         formDataRecipe.append("date", document.getElementById("date").value)
         formDataRecipe.append("instructions", document.getElementById("instructions").value)
@@ -110,10 +93,10 @@ document.getElementById("create-recipe-form").addEventListener('submit', (evt) =
         formDataRecipe.append("bakingTime", document.getElementById("baking-time").value)
         formDataRecipe.append("bakingTemp", document.getElementById("baking-temp").value)
         formDataRecipe.append("feeding", document.getElementById("feeding").checked)
-        formDataRecipe.append("img", img)
+        formDataRecipe.append("img", document.getElementById("img").files[0])
         formDataRecipe.append("ingredients", JSON.stringify(newRecipeIngredients))
 
-    // element.files --> array to access index[0]
+    // rejected syntax: const date = evt.target.elements.date.value;
 
     console.log(formDataRecipe);
 
