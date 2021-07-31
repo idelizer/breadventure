@@ -130,7 +130,6 @@ def create_new_recipe():
     elif is_feeding_str == "true":
         is_feeding = True
 
-
     # if user uploads a picture, get secure url using cloudinary api to be stored in db
     if img:
         result = cloudinary.uploader.upload(img, api_key=CLOUDINARY_KEY, api_secret=CLOUDINARY_SECRET, cloud_name=CLOUDINARY_NAME)
@@ -138,7 +137,6 @@ def create_new_recipe():
     else:
         img_url = None
   
-    
     # parse ingredients/amounts for middle table
     ingr_json = json.loads(ingr_str)
     ingr_ids = []

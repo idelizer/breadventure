@@ -6,31 +6,33 @@ console.log('JS IS WORKING')
 const addIngredients = document.getElementById("add-ingredients");
 const ingredientInput = document.getElementById("ingredients-input");
 const ingredientsTable = document.getElementById("ingredients-table");
-const dbIngredients = [];
+
 
 // inputted ingr/amounts for html display and pass to backend as json on submit
 // array: [{ingredientName: "flour", ingredientAmount: '100'}, {ingredientName: "water", ingredientAmount: '100'}]
 // dict: {"flour": 10, "water": 10, "love": 10}
 
 const newRecipeIngredients = [];
-// obj: const newRecipeIngredients = {};
 
-// frontload all ingredients from database
+// collections for frontloaded ingredients data (array for display, set for lookup)
+const dbIngredients = [];
+const dbIngredientsSet = new Set();
+const makeSet = (arr) => {
+    for (const item of arr) {
+        dbIngredientsSet.add(item);
+     };
+};
+
+// frontload all ingredients from database (array for display, set for lookup)
 // jquery's document.ready loads as page loads (up to 100 ingredients, don't worry about it, 500- 1000 ill take time, dont front load over 10,000)
 // vanilla equivalent is: 
 document.addEventListener("DOMContentLoaded", function() {
     fetch('/get-ingredients')
     .then((res) => res.json())  // response into json
     .then((data) => {console.log(data); return data})
-    .then((data) => dbIngredients.push(data.ingredients))   // data is {ingredients; ingredients}
+    .then((data) => {dbIngredients.push(data.ingredients); return makeSet(data.ingredients)})   // data is {ingredients; ingredients}
+    .then((data) => console.log(dbIngredientsSet + " has been created"))
 });
-console.log(dbIngredients, "are ingredients from DB")
-
-// create function to autofill input box from frontloaded ingredients
-    // event listener that listens for whenever user inputs new character
-        // check what is currenlty written in string against ingr list
-        // store new list with ingr of exact same character
-        // print on html to check if working (later style in css to dropdown)
 
 // generate a html table row with a given objects data
 const generateRow = (obj) => {
@@ -56,6 +58,40 @@ addIngredients.addEventListener('click', () => {
         '<button type="button" id="push-ingredient">Add</button>';
     addIngredients.style.display = "none";
 
+    // listen for whenever user inputs new character
+    document.getElementById("ingredient-name").addEventListener('input', (evt) => {       // input, change, keypress
+        // get string input at every keystroke, convert to lowercase
+        const currentInput = document.getElementById("ingredient-name").value.toLowerCase();
+        console.log(currentInput);
+        //convert currentInput to regex for max search results
+        const regexInput = new RegExp(".*" + currentInput + ".*", "g")
+        console.log(regexInput)
+        for (const ingredient of dbIngredients[0]) {
+            console.log(ingredient.match(regexInput)); // check for value
+            
+        };
+        console.log("...");
+        console.log(dbIngredients[0])
+        //console.log(dbIngredientsSet.has(regexInput)); // check for value
+        // convert fontloaded ingredients to set for fast lookup
+        //console.log(dbIngredientsSet)
+
+        // element to add returned ingredients to:
+        document.getElementById("ingredients-search").style.display = "";
+
+
+        // if string input (or fraction thereof) in ingredients set
+        if (dbIngredients.includes(currentInput) === true) {
+            console.log("its in there")
+        }
+
+        //regex for anything + string + anything + global
+
+        // check what is currenlty written in string against ingr list
+        // store new list with ingr of exact same character
+        // print on html to check if working (later style in css to dropdown)
+    });
+
     // add a single ingredient to array 
     const pushIngredient = document.getElementById("push-ingredient")
     pushIngredient.addEventListener('click', () => {
@@ -66,13 +102,18 @@ addIngredients.addEventListener('click', () => {
             // obj: newRecipeIngredients.inputIngredient = inputAmount;
         };
         console.log(newRecipeIngredients);
+        
          
         generateTable(newRecipeIngredients, ingredientsTable);
 
         inputIngredient.value = ""
         inputAmount.value = ""
+
     });
 });
+
+
+
 
 document.getElementById("create-recipe-form").addEventListener('submit', (evt) => {
     evt.preventDefault();
