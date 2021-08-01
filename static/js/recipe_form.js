@@ -62,7 +62,6 @@ addIngredients.addEventListener('click', () => {
     document.getElementById("ingredient-name").addEventListener('input', (evt) => {       // input, change, keypress
         // get string input at every keystroke, convert to lowercase
         const currentInput = document.getElementById("ingredient-name").value.toLowerCase();
-        console.log(currentInput);
         //convert currentInput to regex for max search results
         const regexInput = new RegExp(".*" + currentInput + ".*", "g")
         // make list of ingredients that have a substring match for regexInput
@@ -72,24 +71,36 @@ addIngredients.addEventListener('click', () => {
             if (result !== null)
                 searchResult.push(result[0]);        
         };
-
-        console.log(searchResult);
-
-        //     
-        // element to add returned ingredients to:
-        const searchDisplay = document.getElementById("ingredients-search");
+  
+        // if user has inputted search char, display resulting list
+        const searchDisplay = document.getElementById("ingredients-search"); // div
         searchDisplay.style.display = "";
         // if user deletes input, display is hidden
         if(dbIngredients[0].length === searchResult.length)
             searchDisplay.style.display = "none";
-            
-        searchDisplay.innerHTML = "<li>" + searchResult + "</li>";
+
+        // generate html list of ingredients from search result
+        const makeListItem = (ingredient, index) => {
+            return ("<li id='result" + index + "'>" + ingredient + "</li>")
+        };
+        
+        const makeHtmlList = (ingredients) => {
+            let listItems = "";
+            for (const index in ingredients) {
+                const listIngredient = makeListItem(ingredients[index], index);
+                listItems = listItems + listIngredient;
+            };
+            return listItems;
+            //document.getElementById("search-list").innerHTML() 
+        };
+        const searchList = document.getElementById("search-list")
+        searchList.innerHTML = makeHtmlList(searchResult);
+
+        // if element is clicked on, set value to input box 
+
 
         console.log(".....");
 
-        // add to list
-        // if element is clicked on
-        // set value to what's in input box
     });
 
     // add a single ingredient to array 
