@@ -74,28 +74,22 @@ addIngredients.addEventListener('click', () => {
         };
 
         console.log(searchResult);
-        console.log(".....");
 
         //     
         // element to add returned ingredients to:
         const searchDisplay = document.getElementById("ingredients-search");
         searchDisplay.style.display = "";
-        // if (searchResult.length === dbIngredients.length)
-        //     searchDisplay.style.display = "";
+        // if user deletes input, display is hidden
+        if(dbIngredients[0].length === searchResult.length)
+            searchDisplay.style.display = "none";
+            
         searchDisplay.innerHTML = "<li>" + searchResult + "</li>";
 
+        console.log(".....");
 
-
-        // if string input (or fraction thereof) in ingredients set
-        if (dbIngredients.includes(currentInput) === true) {
-            console.log("its in there")
-        }
-
-    
-
-        // check what is currenlty written in string against ingr list
-        // store new list with ingr of exact same character
-        // print on html to check if working (later style in css to dropdown)
+        // add to list
+        // if element is clicked on
+        // set value to what's in input box
     });
 
     // add a single ingredient to array 
