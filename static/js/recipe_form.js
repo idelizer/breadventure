@@ -58,26 +58,32 @@ addIngredients.addEventListener('click', () => {
         '<button type="button" id="push-ingredient">Add</button>';
     addIngredients.style.display = "none";
 
-    // listen for whenever user inputs new character
+    // listen for whenever user inputs new character, compare substring to ingredients, return list
     document.getElementById("ingredient-name").addEventListener('input', (evt) => {       // input, change, keypress
         // get string input at every keystroke, convert to lowercase
         const currentInput = document.getElementById("ingredient-name").value.toLowerCase();
         console.log(currentInput);
         //convert currentInput to regex for max search results
         const regexInput = new RegExp(".*" + currentInput + ".*", "g")
-        console.log(regexInput)
+        // make list of ingredients that have a substring match for regexInput
+        const searchResult = [];
         for (const ingredient of dbIngredients[0]) {
-            console.log(ingredient.match(regexInput)); // check for value
-            
+            const result = ingredient.match(regexInput); // match, includes, filter, indexof(.includes) --> if boolean true, capture index of list
+            if (result !== null)
+                searchResult.push(result[0]);        
         };
-        console.log("...");
-        console.log(dbIngredients[0])
-        //console.log(dbIngredientsSet.has(regexInput)); // check for value
-        // convert fontloaded ingredients to set for fast lookup
-        //console.log(dbIngredientsSet)
 
+        console.log(searchResult);
+        console.log(".....");
+
+        //     
         // element to add returned ingredients to:
-        document.getElementById("ingredients-search").style.display = "";
+        const searchDisplay = document.getElementById("ingredients-search");
+        searchDisplay.style.display = "";
+        // if (searchResult.length === dbIngredients.length)
+        //     searchDisplay.style.display = "";
+        searchDisplay.innerHTML = "<li>" + searchResult + "</li>";
+
 
 
         // if string input (or fraction thereof) in ingredients set
@@ -85,7 +91,7 @@ addIngredients.addEventListener('click', () => {
             console.log("its in there")
         }
 
-        //regex for anything + string + anything + global
+    
 
         // check what is currenlty written in string against ingr list
         // store new list with ingr of exact same character
