@@ -81,7 +81,9 @@ addIngredients.addEventListener('click', () => {
 
         // generate html list of ingredients from search result
         const makeListItem = (ingredient, index) => {
-            return ("<li id='result" + index + "'>" + ingredient + "</li>")
+            return ("<li id='result" + index + "' value='" + ingredient + "'>" + ingredient + "</li>")
+            // return ("<li value='" + ingredient + "'>" + ingredient + "</li>")
+            // return ("<li>" + ingredient + "</li>")
         };
         
         const makeHtmlList = (ingredients) => {
@@ -93,13 +95,16 @@ addIngredients.addEventListener('click', () => {
             return listItems;
             //document.getElementById("search-list").innerHTML() 
         };
-        const searchList = document.getElementById("search-list")
-        searchList.innerHTML = makeHtmlList(searchResult);
-
-        // if element is clicked on, set value to input box 
-
+        document.getElementById("search-list").innerHTML = makeHtmlList(searchResult);
 
         console.log(".....");
+
+    });
+
+    // if element is clicked on, set value to input box 
+    document.getElementById("search-list").addEventListener('click', (evt) => {
+        const clickedIngr = evt.target.getAttribute("value");
+        document.getElementById("ingredient-name").value = clickedIngr;
 
     });
 
@@ -122,8 +127,6 @@ addIngredients.addEventListener('click', () => {
 
     });
 });
-
-
 
 
 document.getElementById("create-recipe-form").addEventListener('submit', (evt) => {

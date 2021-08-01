@@ -27,19 +27,19 @@ for n in range(1, 11):
     new_user = crud.create_user(username, email, password)
 
 # seeding ingredients from list for testing purposes
-ingredient_list = ["flour", "salt", "water", "starter", "yeast",]
+# ingredient_list = ["flour", "salt", "water", "starter", "yeast",]
 
-for ingredient in ingredient_list:
-    new_test_ingredient = crud.create_ingredient(ingredient)
+# for ingredient in ingredient_list:
+#     new_test_ingredient = crud.create_ingredient(ingredient)
 
-# seeding ingredients from textfile
+seeding ingredients from textfile
 
-# ingredients_file = open("data/ingredients.txt")
-# ingredients = ingredients_file.read().split("\n")
+ingredients_file = open("data/ingredients.txt")
+ingredients = ingredients_file.read().split("\n")
 
-# for ingredient in ingredients:
-#     if ingredient != "":
-#         new_ingredient = crud.create_ingredient(ingredient)
+for ingredient in ingredients:
+    if ingredient != "":
+        new_ingredient = crud.create_ingredient(ingredient)
 
 # seeding recipes
 recipe1 = crud.create_recipe(1, '01-01-2011', 'instructions1', 'name1', 'observations1', 11, 111)
