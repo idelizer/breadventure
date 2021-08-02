@@ -6,29 +6,29 @@
   
     <div class='container'>
         <ul>Recipe Details</ul>
-            <li>{{ recipe.date }}</li>
-            <li>{{ recipe.instructions }}</li>
+            <li id="date">{{ recipe.date }}</li>
+            <li id="instructions">{{ recipe.instructions }}</li>
             {% if recipe.name %}
-                <li>{{ recipe.name }}</li>
+                <li id="name">{{ recipe.name }}</li>
             {% endif %}
             {% if recipe.observations %}
-                <li>{{ recipe.observations }}</li>
+                <li id="observations">{{ recipe.observations }}</li>
             {% endif %}
             {% if recipe.baking_time %}
-                <li>{{ recipe.baking_time }}</li>
+                <li id="baking-time">{{ recipe.baking_time }}</li>
             {% endif %}
             {% if recipe.baking_temp %}
-                <li>{{ recipe.baking_temp }}</li>
+                <li id="baking-temp">{{ recipe.baking_temp }}</li>
             {% endif %}
             {% if recipe.picture %}
-                <img src="{{ recipe.picture }}"</li>
+                <img src="{{ recipe.picture }}" id="img"</li>
             {% endif %}
             {% if recipe.is_starter_feeding is true %}
-                <li>Is a starter feeding!</li>
+                <li id="feeding">Is a starter feeding!</li>
             {% endif %}
     </div>
     <div class='container'>
-        <ul>Ingredients</ul>
+        <ul id="ingredients-list">Ingredients</ul>
             {% for amount in amounts %}
                 <li>{{ amount.ingredient.name }}</li>
                 <li>{{ amount.amount_in_grams }}</li>
@@ -37,5 +37,6 @@
     <div class='container'>
         <a href='/user'>Back</a>
     </div>
-        
+      
+    <script src="/static/js/recipe_details.js" type="text/javascript"></script>
 {% endblock %}

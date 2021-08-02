@@ -124,7 +124,7 @@ addIngredients.addEventListener('click', () => {
 
         inputIngredient.value = ""
         inputAmount.value = ""
-
+        document.getElementById("ingredients-search").style.display = "none";
     });
 });
 
