@@ -160,53 +160,44 @@ def create_new_recipe():
     # TO BE FIXED: javascript currently expecting json
     return {"success": "success"}
 
-@app.route('/feed-starter')
-def feed_starter():
-    """View form for user to input starter feeding details."""
+# @app.route('/feed-starter')
+# def feed_starter():
+#     """View form for user to input starter feeding details."""
 
-    return render_template('feeding-form.html')
+#     return render_template('feeding-form.html')
 
-@app.route('/create-feeding', methods=['POST'])
-def create_new_feeding():
-    """Process form from new starter feeding form, add to database."""
+# @app.route('/create-feeding', methods=['POST'])
+# def create_new_feeding():
+#     """Process form from new starter feeding form, add to database."""
 
-    user_id = session["user_id"]
+#     user_id = session["user_id"]
 
-    date = request.form['date']
-    instructions = request.form['instructions']
-    name = request.form['name']
-    observations = request.form['observations']
-    baking_time = request.form['baking-time']
-    baking_temp = request.form['baking-temp']
-    img = request.files['img']
+#     date = request.form['date']
+#     instructions = request.form['instructions']
+#     name = request.form['name']
+#     observations = request.form['observations']
+#     baking_time = request.form['baking-time']
+#     baking_temp = request.form['baking-temp']
+#     img = request.files['img']
 
-    if name == "":
-        name = None
+#     if name == "":
+#         name = None
 
-    if observations == "":
-        observations = None
+#     if observations == "":
+#         observations = None
     
-    if baking_time == "":
-        baking_time = None
+#     if baking_time == "":
+#         baking_time = None
 
-    if baking_temp == "":
-        baking_temp = None
+#     if baking_temp == "":
+#         baking_temp = None
 
-    flash(f"Starter successfully fed!")
+#     flash(f"Starter successfully fed!")
 
-    new_feeding = crud.create_starter_feeding(user_id, date, instructions, name, observations, baking_time, baking_temp)
-    print(new_feeding)
+#     new_feeding = crud.create_starter_feeding(user_id, date, instructions, name, observations, baking_time, baking_temp)
+#     print(new_feeding)
 
-    print()
-    print(type(img))
-    result = cloudinary.uploader.upload(img, api_key=CLOUDINARY_KEY, api_secret=CLOUDINARY_SECRET, cloud_name=CLOUDINARY_NAME)
-    print(result)
-    img_url = result['secure_url']
-    print(img_url)
-    session["picture"] = img_url
-    print()
-
-    return redirect('/user')
+#     return redirect('/user')
 
 
 if __name__ == '__main__':

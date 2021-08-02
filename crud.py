@@ -62,15 +62,15 @@ def get_recipes_by_user(user_id):
 # function for each table per each function
 # or query that unions all things I want to search
 
-def create_starter_feeding(user_id, date, instructions, name=None, observations=None, baking_time=None, baking_temp=None, is_starter_feeding=True):
-    """Create starter feeding, a recipe object where is_starter_feeding is set to True."""
+# def create_starter_feeding(user_id, date, instructions, name=None, observations=None, baking_time=None, baking_temp=None, is_starter_feeding=True):
+#     """Create starter feeding, a recipe object where is_starter_feeding is set to True."""
 
-    starter_feeding = Recipe(user_id=user_id, date=date, instructions=instructions, name=name, observations=observations, baking_time=baking_time, baking_temp=baking_temp, is_starter_feeding=is_starter_feeding)
+#     starter_feeding = Recipe(user_id=user_id, date=date, instructions=instructions, name=name, observations=observations, baking_time=baking_time, baking_temp=baking_temp, is_starter_feeding=is_starter_feeding)
 
-    db.session.add(starter_feeding)
-    db.session.commit()
+#     db.session.add(starter_feeding)
+#     db.session.commit()
 
-    return starter_feeding
+#     return starter_feeding
 
 def create_ingredient(name):
     """Create and return a new ingredient."""
