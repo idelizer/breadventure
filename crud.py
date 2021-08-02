@@ -72,6 +72,20 @@ def get_recipes_by_user(user_id):
 
 #     return starter_feeding
 
+def delete_recipe(recipe_id):
+    """Delete a recipe from the db given its id."""
+
+    amounts = RecipeIngredient.query.filter(RecipeIngredient.recipe_id == recipe_id).all()
+    recipe = Recipe.query.get(recipe_id)
+
+    if amounts:
+        for amount in amounts:
+            db.session.delete(amount)
+    db.session.delete(recipe)
+    db.session.commit()
+
+    return (f"<recipe id={recipe_id} has been deleted.")
+
 def create_ingredient(name):
     """Create and return a new ingredient."""
 

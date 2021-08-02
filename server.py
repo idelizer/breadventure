@@ -64,6 +64,14 @@ def display_recipe_details(recipe_id):
 
     return render_template('recipe_details.html', recipe=recipe, amounts=amounts) # pass in ingredients
 
+@app.route('/delete-recipe', methods=['POST'])
+def delete_recipe():
+    
+    recipe_id = request.json.get("recipe_id")
+    deleted_msg = crud.delete_recipe(recipe_id)
+
+    return "Success!"
+
 @app.route('/new-user')
 def new_user():
     """View form to register new user."""

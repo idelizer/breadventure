@@ -44,8 +44,8 @@ for ingredient in ingredients:
 recipe1 = crud.create_recipe(1, '01-01-2011', 'instructions1', 'name1', 'observations1', 11, 111)
 recipe2 = crud.create_recipe(1, '02-02-2022', 'instructions2', None, 'observations2', None, 222)
 recipe3 = crud.create_recipe(1, '03-03-2033', 'instructions3')
+recipe4 = crud.create_recipe(1, '02-02-2022', 'instructions4', None, None, None, None, None, True)
 
-feeding1 = crud.create_starter_feeding(1, '04-04-2044', 'instructions4', 'name4', None, 44, None)
 
 # seeding amounts (middle table between recipe and ingredients)
     # set amounts for first recipe of first user
