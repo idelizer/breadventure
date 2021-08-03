@@ -72,11 +72,11 @@ def get_amounts():
     recipe_id = request.json.get("recipe_id")
     amounts = crud.get_amounts_by_recipe(recipe_id)
     
-    amount_dict = {}
+    amount_data = []
     for amount in amounts:
-        amount_dict[amount.ingredient.name] = amount.amount_in_grams
+        amount_data.append({"ingredient_name": amount.ingredient.name, "amount": amount.amount_in_grams})
 
-    return jsonify(amount_dict)
+    return jsonify({'data': amount_data})
 
 
 @app.route('/delete-recipe', )

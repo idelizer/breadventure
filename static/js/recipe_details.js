@@ -26,8 +26,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     })
     .then(response => response.json()) // response into json
-    .then(data => {console.log(data); return data})
-    .then(data => {amountJson.push(data.ingredients)});
+    // .then(data => {console.log(data); return data})
+    .then(data => {
+        for (const amount of data.data) {
+            amountJson.push({x: amount.ingredient_name, y: amount.amount})
+        };
+    })
+    .then(data => {console.log(amountJson); console.log(data)});
 });
 
 const testChart = new Chart(graphCanvas, {
