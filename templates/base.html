@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        {% block title %}TITLE GOES HERE{% endblock %}
-    </title>
+
+    <title>{% block title %}TITLE GOES HERE{% endblock %}</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul class=flashes>

@@ -62,6 +62,17 @@ def display_recipe_details(recipe_id):
 
     print(amounts)
 
+    amount_dict = {}
+    for amount in amounts:
+        amount_dict[amount.ingredient.name] = amount.amount_in_grams
+
+    print(amount_dict)
+    # most useful format for a bar graph?
+    # dict {amount.ingredient.name: amount_in_grams}
+    # parallel lists
+
+  
+
     return render_template('recipe_details.html', recipe=recipe, amounts=amounts) # pass in ingredients
 
 @app.route('/delete-recipe', methods=['POST'])

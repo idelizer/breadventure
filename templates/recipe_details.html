@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    {# D3 #}   
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    {# ChartJS #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+{% endblock %}
+
 {% block title %}Welcome to Bread Journal!{% endblock %}
 
 {% block body %}
-  
+    
     <div class='container'>
         <ul>Recipe Details</ul>
             <li id="date">{{ recipe.date }}</li>
@@ -33,6 +40,11 @@
                 <li>{{ amount.ingredient.name }}</li>
                 <li>{{ amount.amount_in_grams }}</li>
             {% endfor %}
+    </div>
+
+    <div id="graph">
+        <canvas id="graph-canvas"></canvas>
+        <!-- <svg></svg> -->
     </div>
 
     <div class='container'>

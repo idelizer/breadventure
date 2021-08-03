@@ -56,3 +56,8 @@ amount4starter = crud.create_amount(1, 4, 100)
 
 amount5flour = crud.create_amount(2, 1, 500)
 amount6water = crud.create_amount(2, 3, 600)
+
+amount7flour = crud.create_amount(3, 1, 100)
+amount8water = crud.create_amount(3, 27, 80)
+amount9starter = crud.create_amount(3, 37, 10)
+amount10salt = crud.create_amount(3, 41, 2)
