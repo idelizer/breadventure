@@ -60,23 +60,28 @@ def display_recipe_details(recipe_id):
     # get ingredients and their amounts
     amounts = crud.get_amounts_by_recipe(recipe_id)
 
-    print(amounts)
+    return render_template('recipe_details.html', recipe=recipe, amounts=amounts) # pass in ingredients
 
+@app.route('/get-amounts', methods=['POST'])
+def get_amounts():
+    """Get a recipe's ingredients and associated amounts."""
+    # most useful format for a bar graph?
+    # json/dict {amount.ingredient.name: amount_in_grams}
+    # or parallel lists?
+
+    recipe_id = request.json.get("recipe_id")
+    amounts = crud.get_amounts_by_recipe(recipe_id)
+    
     amount_dict = {}
     for amount in amounts:
         amount_dict[amount.ingredient.name] = amount.amount_in_grams
 
-    print(amount_dict)
-    # most useful format for a bar graph?
-    # dict {amount.ingredient.name: amount_in_grams}
-    # parallel lists
+    return jsonify(amount_dict)
 
-  
 
-    return render_template('recipe_details.html', recipe=recipe, amounts=amounts) # pass in ingredients
-
-@app.route('/delete-recipe', methods=['POST'])
+@app.route('/delete-recipe', )
 def delete_recipe():
+    """Given a recipe id, delete recipe from db."""
     
     recipe_id = request.json.get("recipe_id")
     deleted_msg = crud.delete_recipe(recipe_id)
