@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const testChart = new Chart(graphCanvas, {
                 type: "bar",
                 data: {
-                    labels: amountNames, //amountJson, // how to access name of each object??
-                    datasets: [{                                            // array of dataset objects
-                        label: "hello",       // labels on x axis
-                        data: amountJson,                                        // size of each bar
+                    labels: amountNames, 
+                    datasets: [{                                    // array of dataset objects
+                        label: "hello",                             // labels on x axis
+                        data: amountJson,                           // size of each bar
                         backgroundColor: backgroundColors,
                         borderColor: borderColors,
                         borderWidth: 1,
@@ -87,9 +87,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         );
-    };  // create new array of objects for array
+    };  
     
-
 
 // delete recipe
 document.getElementById("delete").addEventListener('click', (evt) => {

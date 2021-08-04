@@ -85,7 +85,7 @@ def get_amounts():
     # for each ingredient, set ratio to grams to get percent
     for amount in amounts:
         percentage = (amount.amount_in_grams / ratio)
-        amount.percentage = (percentage * 100)
+        amount.percentage = int(percentage * 100)
         print(amount.percentage)
  
     amount_data = []
