@@ -37,52 +37,58 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     })
     .then(response => response.json()) // response into json
-    // .then(data => {console.log(data); return data})
+    .then(data => {console.log(data); return data})
     .then(data => {
         for (const amount of data.data) {
             amountJson.push({x: amount.ingredient_name, y: amount.amount});
             amountNames.push(amount.ingredient_name);
             // amountPercentages.push(amount.amount);
         };
-    })
-    .then(data => {console.log(amountJson); console.log(amountNames); // create new array of objects for array
-    const testChart = new Chart(graphCanvas, {
-        type: "bar",
-        data: {
-            labels: amountNames, //amountJson, // how to access name of each object??
-            datasets: [{                                            // array of dataset objects
-                label: "hello",       // labels on x axis
-                data: amountJson,                                        // size of each bar
-                backgroundColor: backgroundColors,
-                borderColor: borderColors,
-                borderWidth: 1,
-                hoverBorderWidth: 5
-            }]
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Ingredients",
-                        // color: 'rgba(255, 99, 132, 1)',
-                        // align: "end" 
-                    },
-                }],
-                yAxes: [{
-                    ticks: {
-                        min: 0,
-                        max: 120
-                    },
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Baker's Percentage"
-                    },
-                }]
+        return data})
+    .then(data => {
+        if (data.data.length !== 0) {
+            console.log(data.data.length);
+            console.log("working")
+
+            const testChart = new Chart(graphCanvas, {
+                type: "bar",
+                data: {
+                    labels: amountNames, //amountJson, // how to access name of each object??
+                    datasets: [{                                            // array of dataset objects
+                        label: "hello",       // labels on x axis
+                        data: amountJson,                                        // size of each bar
+                        backgroundColor: backgroundColors,
+                        borderColor: borderColors,
+                        borderWidth: 1,
+                        hoverBorderWidth: 5
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Ingredients",
+                                // color: 'rgba(255, 99, 132, 1)',
+                                // align: "end" 
+                            },
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                max: 120
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Baker's Percentage"
+                            },
+                        }]
+                    }
+                }
             }
-        }
-    }
-);
+        );
+    };  // create new array of objects for array
+    
 
 
 // delete recipe
