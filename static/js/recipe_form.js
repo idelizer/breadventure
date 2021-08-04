@@ -48,6 +48,16 @@ const generateTable = (obj, elem) => {
     elem.innerHTML = headers + allRowsStr
 };
 
+// suggestions box pop up
+document.getElementById("suggestions-box").onmouseover = function() {
+    document.getElementById('suggestions').style.display = 'block';
+};
+document.getElementById("suggestions-box").onmouseout = function() {
+    document.getElementById('suggestions').style.display = 'none';
+};
+
+
+
 // begin adding ingredients (box to add pops up)
 addIngredients.addEventListener('click', () => {
     // when Add Ingredients clicked, creates new input box and Add button (could use document.createElement)

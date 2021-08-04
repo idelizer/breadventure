@@ -70,11 +70,27 @@ def get_amounts():
     # or parallel lists?
 
     recipe_id = request.json.get("recipe_id")
-    amounts = crud.get_amounts_by_recipe(recipe_id)
+    amounts = crud.get_amounts_by_recipe(recipe_id) # list of objects, can access grams and name
     
+    # find baker's percentage of each ingredient
+
+    # get ratio (find ingredient with flour in key, set to 100% --> 300 g = 100%)
+    ratio = 0
+    for amount in amounts:
+        if "flour" in amount.ingredient.name:
+            ratio += amount.amount_in_grams
+            print()
+            print(ratio)
+            print()
+    # for each ingredient, set ratio to grams to get percent
+    for amount in amounts:
+        percentage = (amount.amount_in_grams / ratio)
+        amount.percentage = (percentage * 100)
+        print(amount.percentage)
+ 
     amount_data = []
     for amount in amounts:
-        amount_data.append({"ingredient_name": amount.ingredient.name, "amount": amount.amount_in_grams})
+        amount_data.append({"ingredient_name": amount.ingredient.name, "amount": amount.percentage})
 
     return jsonify({'data': amount_data})
 

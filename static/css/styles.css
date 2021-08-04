@@ -3,3 +3,7 @@
     height: 300px;
     margin: 0 auto;
   }
+
+  #suggestions:hover {
+    display: block;
+  }

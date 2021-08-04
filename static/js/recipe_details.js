@@ -9,14 +9,25 @@ const recipeIdJSON = {"recipe_id": recipeId};
 const graphContainer = document.getElementById("graph"); //
 const graphCanvas = document.getElementById("graph-canvas");
 
-// once not hardcoded, fetch data from backend (how to pass as json without jquery?- notes are only jquery)
-// or pass through flask as hidden html
-const grams = [100, 80, 10, 2];
-const names = ["flour", "water", "sourdough starter", "salt"];
-const jsonAmounts = {"flour": 100, "water": 80, "sourdough starter": 10, "salt": 2}
+// set colors for bar graph
+const backgroundColors = [
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(255, 206, 86, 0.2)',
+    'rgba(75, 192, 192, 0.2)',
+];
+const borderColors = [
+    'rgba(255, 99, 132, 1)',
+    'rgba(54, 162, 235, 1)',
+    'rgba(255, 206, 86, 1)',
+    'rgba(75, 192, 192, 1)',
+];
 
 // given recipe ID, get json amount data
 const amountJson = [];
+const amountNames = [];
+// const amountPercentages = [];
+
 document.addEventListener("DOMContentLoaded", function() {
     fetch("/get-amounts", {
         method: "POST",
@@ -29,31 +40,21 @@ document.addEventListener("DOMContentLoaded", function() {
     // .then(data => {console.log(data); return data})
     .then(data => {
         for (const amount of data.data) {
-            amountJson.push({x: amount.ingredient_name, y: amount.amount})
+            amountJson.push({x: amount.ingredient_name, y: amount.amount});
+            amountNames.push(amount.ingredient_name);
+            // amountPercentages.push(amount.amount);
         };
     })
-    .then(data => {console.log(amountJson); console.log(data)});
-});
-
-const testChart = new Chart(graphCanvas, {
+    .then(data => {console.log(amountJson); console.log(amountNames); // create new array of objects for array
+    const testChart = new Chart(graphCanvas, {
         type: "bar",
         data: {
-            labels: names,
+            labels: amountNames, //amountJson, // how to access name of each object??
             datasets: [{                                            // array of dataset objects
-                // labels: ["hello", "goodbye", "hi", "bye"],       // labels on x axis
-                data: grams,                                        // size of each bar
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                ],
+                label: "hello",       // labels on x axis
+                data: amountJson,                                        // size of each bar
+                backgroundColor: backgroundColors,
+                borderColor: borderColors,
                 borderWidth: 1,
                 hoverBorderWidth: 5
             }]
@@ -65,13 +66,13 @@ const testChart = new Chart(graphCanvas, {
                         display: true,
                         labelString: "Ingredients",
                         // color: 'rgba(255, 99, 132, 1)',
-                        // align: "end"
+                        // align: "end" 
                     },
                 }],
                 yAxes: [{
                     ticks: {
-                    min: 0,
-                    max: 120
+                        min: 0,
+                        max: 120
                     },
                     scaleLabel: {
                         display: true,
@@ -102,6 +103,11 @@ document.getElementById("delete").addEventListener('click', (evt) => {
         window.location.assign("/user")
     });
 });
+    
+    });
+});
+
+
 
 // format instructions with numbers, observations with dashes
 // document.getElementById("instructions").value // get value of instructions
