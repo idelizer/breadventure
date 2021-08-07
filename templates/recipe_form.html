@@ -11,45 +11,45 @@
         <div class='container'>
             <form action='/create-recipe' method='POST' id='create-recipe-form'>
                 <div class="row">
-                    <span class="col-4">
+                    <span class="col-4 mb-3">
                         <label for="date" class="form-label">Date</label>
                         <input type="date" id="date" class="form-control" name="date" required>
                     </span>
-                    <span class="col-4">
-                        <label for="name" class="form-label">Name of your recipe.</label>
+                    <span class="col-4 mb-3">
+                        <label for="name" class="form-label">Name of your recipe</label>
                         <input type="text" id="name" class="form-control" name="name">
                     </span> 
                 </div>
                 <div class="row">
-                    <span class="col-8">
-                        <label for="instructions" class="form-label">Instructions.</label>
+                    <span class="col-8 mb-3">
+                        <label for="instructions" class="form-label">Instructions</label>
                         <textarea id="instructions" name="instructions" class="form-control" rows="4" cols="50" required></textarea>
                     </span>
-                    <span class="col-8">
-                        <label for="observations" class="form-label">Observations.</label>
+                    <span class="col-8 mb-3">
+                        <label for="observations" class="form-label">Observations</label>
                         <textarea id="observations" name="observations" class="form-control" rows="4" cols="50"></textarea>
                     </span>
                 </div>
                 <div class="row">
-                    <span class="col-4">
-                        <label for="baking-time" class="form-label">Baking time.</label>
+                    <span class="col-4 mb-3">
+                        <label for="baking-time" class="form-label">Baking time</label>
                         <input type="number" id="baking-time" class="form-control" name="bakingtime">
                     </span>
-                    <span class="col-4">
-                        <label for="baking-temp" class="form-label">Baking temperature.</label>
+                    <span class="col-4 mb-3">
+                        <label for="baking-temp" class="form-label">Baking temperature</label>
                         <input type="number" id="baking-temp" class="form-control" name="bakingtemp">
                     </span>
                 </div>
                 <div class="row">
-                    <span class="col-4">
+                    <span class="col-4 mb-3">
                         <label for="feeding" class="form-label">Is this a starter feeding?</label>
                         <input type="checkbox" id="feeding" class="form-control" name="feeding">
                     </span>
-                    <span class="col-4">
-                        <label for="img" class="form-label">Upload photo.</label>
+                    <span class="col-4 mb-3">
+                        <label for="img" class="form-label">Upload photo</label>
                         <input type="file" id="img" class="form-control" name="img" accept="image/*">
                     </span>
-                    <span class="col-3">
+                    <span class="col-3 mb-3">
                         <div id="suggestions-box">Suggestions
                             <div id="suggestions" style="display: none">
                                 Suggestions for instructions and observations:
@@ -65,7 +65,7 @@
                     </span>
                 </div>
                 <div class="row">
-                    <span>
+                    <span class="col-8 mb-3">
                         <label for="add-ingredients" class="form-label">Ingredients</label>
                         <button type="button" id="add-ingredients" class="form-control">Add Ingredients</button>
                     </span>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="row">
-                    <span>
+                    <span class="col-8 mb-3">
                         <button type='submit' class="form-control">Experiment!</button>
                     </span>
                 </div>

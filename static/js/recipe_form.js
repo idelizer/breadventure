@@ -61,13 +61,13 @@ document.getElementById("suggestions-box").onmouseout = function() {
 // begin adding ingredients (box to add pops up)
 addIngredients.addEventListener('click', () => {
     // when Add Ingredients clicked, creates new input box and Add button (could use document.createElement)
-    ingredientInput.innerHTML = '<div class="row"> <span class="col-4">' + 
+    ingredientInput.innerHTML = '<div class="row"> <span class="col-4 mb-3">' + 
         '<label for="ingredient-name" class="form-label">Ingredient Name</label>' +
         '<input type="text" id="ingredient-name" class="form-control">' +
-        '</span> <span class="col-4">' +
+        '</span> <span class="col-4 mb-3">' +
         '<label for="ingredient-amount" class="form-label">Amount in Grams</label>' +
         '<input type="number" id="ingredient-amount" class="form-control">' +
-        '</span> <span class="col-1">' +
+        '</span> <span class="col-1 mb-3">' +
         '<button type="button" id="push-ingredient" class="form-control">Add</button>'
         '</span> <div>';
 
