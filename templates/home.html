@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to Bread Journal!{% endblock %}
+{% block title %}Welcome to Breadventure!{% endblock %}
 
 {% block body %}
     <div class="container" id="welcome-page">
-        <div class='container'>
-            <h1 id="welcome">Welcome!</h1>
+        <div class='row'>
+            <h1 id="welcome" class="col-12 position-relative">Welcome!</h1>
         </div>
 
-        <div class='container' id="login-form">
+        <div class='row ' id="login-form">
             <form action='/login' method='POST'>
-                <div>
+                <div class="col-12">
                     <label class="home-form-label">Email.</label>
                     <input type="text" name="email"> 
                 </div>
@@ -20,8 +20,9 @@
                 </div>
                 <div>
                     <button type='submit'>Log in.</button>
+                    Or
+                    <a href='/new-user'> make an account.</a>
                 </div>
-                <a href='/new-user'>Make an account.</a>
             </form>
         </div>
     </div>

@@ -61,11 +61,16 @@ document.getElementById("suggestions-box").onmouseout = function() {
 // begin adding ingredients (box to add pops up)
 addIngredients.addEventListener('click', () => {
     // when Add Ingredients clicked, creates new input box and Add button (could use document.createElement)
-    ingredientInput.innerHTML = '<label>Ingredient Name</label>' +
-        '<input type="text" id="ingredient-name">' +
-        '<label>Amount in Grams</label>' +
-        '<input type="number" id="ingredient-amount">' +
-        '<button type="button" id="push-ingredient">Add</button>';
+    ingredientInput.innerHTML = '<div class="row"> <span class="col-4">' + 
+        '<label for="ingredient-name" class="form-label">Ingredient Name</label>' +
+        '<input type="text" id="ingredient-name" class="form-control">' +
+        '</span> <span class="col-4">' +
+        '<label for="ingredient-amount" class="form-label">Amount in Grams</label>' +
+        '<input type="number" id="ingredient-amount" class="form-control">' +
+        '</span> <span class="col-1">' +
+        '<button type="button" id="push-ingredient" class="form-control">Add</button>'
+        '</span> <div>';
+
     addIngredients.style.display = "none";
 
     // listen for whenever user inputs new character, compare substring to ingredients, return list
