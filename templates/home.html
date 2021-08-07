@@ -3,18 +3,24 @@
 {% block title %}Welcome to Bread Journal!{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container" id="welcome-page">
         <div class='container'>
-            <h1>Welcome!</h1>
+            <h1 id="welcome">Welcome!</h1>
         </div>
 
-        <div class='container'>
+        <div class='container' id="login-form">
             <form action='/login' method='POST'>
-                <label>Email.</label>
-                <input type="text" name="email"> 
-                <label>Password.</label>
-                <input type="password" name="password">
-                <button type='submit'>Log in.</button> 
+                <div>
+                    <label class="home-form-label">Email.</label>
+                    <input type="text" name="email"> 
+                </div>
+                <div>
+                    <label class="home-form-label">Password.</label>
+                    <input type="password" name="password">
+                </div>
+                <div>
+                    <button type='submit'>Log in.</button>
+                </div>
                 <a href='/new-user'>Make an account.</a>
             </form>
         </div>

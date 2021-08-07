@@ -1,7 +1,11 @@
 body {
-  background-color: lightseagreen;
-
+  background: url(/static/img/flour2.jpg) no-repeat center center;
+  background-size: cover;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: rgb(190, 200, 205) 
 }
+
+
 
 #graph {
     width: 400px;
@@ -13,24 +17,56 @@ body {
   display: block;
 }
 
-.container {
-  background-color: lightgray;
-}
-
-  /* nav bar  */
-
-.d-flex {
+/* .container {
   background-color: grey;
+} */
+
+a {
+  color: green;
 }
 
-.nav-link {
+a:hover {
+  color:red;
+}
+
+button {
+  color: blue;
+}
+
+button:hover {
+  color: pink;
+}
+
+  /* Nav Bar  */
+
+.navbar {
+  color: darkgray;
+}
+
+.navbar-brand {
+  font-family: 'Style Script', cursive;
+  font-size: xx-large;
+}
+
+.nav-link, .navbar-brand {
   color: white;
 }
 
-.nav-link:hover {
+.nav-link:hover, .navbar-brand:hover {
   color: lightgray;
 }
 
-.nav-link:active {
+.nav-link:active, .navbar-brand:active {
   color: purple;
+}
+
+/* Welcome Page */
+
+#welcome-page {
+  background: rgba(112,128,144, 0.65);
+}
+
+#welcome {
+  margin-top: 5 m;
+
 }
