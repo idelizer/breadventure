@@ -10,52 +10,53 @@
 {% block title %}Welcome to Bread Journal!{% endblock %}
 
 {% block body %}
-    
     <div class='container'>
-        <ul>Recipe Details</ul>
-            <li id="date">{{ recipe.date }}</li>
-            <li id="instructions">{{ recipe.instructions }}</li>
-            {% if recipe.name %}
-                <li id="name">{{ recipe.name }}</li>
-            {% endif %}
-            {% if recipe.observations %}
-                <li id="observations">{{ recipe.observations }}</li>
-            {% endif %}
-            {% if recipe.baking_time %}
-                <li id="baking-time">{{ recipe.baking_time }}</li>
-            {% endif %}
-            {% if recipe.baking_temp %}
-                <li id="baking-temp">{{ recipe.baking_temp }}</li>
-            {% endif %}
-            {% if recipe.picture %}
-                <img src="{{ recipe.picture }}" id="img"</li>
-            {% endif %}
-            {% if recipe.is_starter_feeding is true %}
-                <li id="feeding">Is a starter feeding!</li>
-            {% endif %}
-    </div>
-    <div class='container'>
-        <ul id="ingredients-list">Ingredients</ul>
-            {% for amount in amounts %}
-                <li>{{ amount.ingredient.name }}</li>
-                <li>{{ amount.amount_in_grams }}</li>
-            {% endfor %}
-    </div>
+        <div class='container'>
+            <ul>Recipe Details</ul>
+                <li id="date">{{ recipe.date }}</li>
+                <li id="instructions">{{ recipe.instructions }}</li>
+                {% if recipe.name %}
+                    <li id="name">{{ recipe.name }}</li>
+                {% endif %}
+                {% if recipe.observations %}
+                    <li id="observations">{{ recipe.observations }}</li>
+                {% endif %}
+                {% if recipe.baking_time %}
+                    <li id="baking-time">{{ recipe.baking_time }}</li>
+                {% endif %}
+                {% if recipe.baking_temp %}
+                    <li id="baking-temp">{{ recipe.baking_temp }}</li>
+                {% endif %}
+                {% if recipe.picture %}
+                    <img src="{{ recipe.picture }}" id="img"</li>
+                {% endif %}
+                {% if recipe.is_starter_feeding is true %}
+                    <li id="feeding">Is a starter feeding!</li>
+                {% endif %}
+        </div>
+        <div class='container'>
+            <ul id="ingredients-list">Ingredients</ul>
+                {% for amount in amounts %}
+                    <li>{{ amount.ingredient.name }}</li>
+                    <li>{{ amount.amount_in_grams }}</li>
+                {% endfor %}
+        </div>
 
-    <div id="graph">
-        <canvas id="graph-canvas"></canvas>
-        <!-- <svg></svg> -->
-    </div>
+        <div id="graph" class="container">
+            <canvas id="graph-canvas"></canvas>
+            <!-- <svg></svg> -->
+        </div>
 
-    <div class='container'>
-        <form>
-            <button type="button" id="delete">Delete Recipe.</button>
-        </form>
-    </div>
+        <div class='container'>
+            <form>
+                <button type="button" id="delete">Delete Recipe.</button>
+            </form>
+        </div>
 
-    <div class='container'>
-        <a href='/user'>Back</a>
+        <div class='container'>
+            <a href='/user'>Back</a>
+        </div>
+        
+        <script src="/static/js/recipe_details.js" type="text/javascript"></script>
     </div>
-      
-    <script src="/static/js/recipe_details.js" type="text/javascript"></script>
 {% endblock %}

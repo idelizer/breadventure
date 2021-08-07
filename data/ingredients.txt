@@ -116,6 +116,7 @@ lemon juice
 lemon zest
 orange zest
 apple
+raisins
 maple syrup
 sugar
 brown sugar

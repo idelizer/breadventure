@@ -4,18 +4,21 @@
 
 {% block body %}
     <div class="container">
-        <h1>Make an account!</h1>
-    </div>
-    <div class="container">
-        <form action='/register-user' method='POST'>
-            <label for="username">Username.</label>
-            <input type="username" name="username" placeholder="Username" required>
-            <label for="email">Email.</label>
-            <input type="email" name="email" required> 
-            <label for="password">Password.</label>
-            <input type="password" name="password" required>
-            <button type="submit">Make my account!</button> 
-        </form>
-    </div>       
-    
+
+        <div class="container">
+            <h1>Make an account!</h1>
+        </div>
+
+        <div class="container">
+            <form action='/register-user' method='POST'>
+                <label for="username">Username.</label>
+                <input type="username" name="username" placeholder="Username" required>
+                <label for="email">Email.</label>
+                <input type="email" name="email" required> 
+                <label for="password">Password.</label>
+                <input type="password" name="password" required>
+                <button type="submit">Make my account!</button> 
+            </form>
+        </div>       
+    </div>  
 {% endblock %}

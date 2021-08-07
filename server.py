@@ -12,7 +12,6 @@ import cloudinary.uploader
 CLOUDINARY_KEY = os.environ.get('CLOUDINARY_KEY')
 CLOUDINARY_SECRET = os.environ.get('CLOUDINARY_SECRET')
 CLOUDINARY_NAME = os.environ.get('CLOUDINARY_NAME')
-
 #########################################
 
 app = Flask(__name__)
@@ -46,11 +45,15 @@ def login():
 
 @app.route('/user')
 def user_page():
-    
-    user = crud.get_user_by_id(session["user_id"])
-    recipes = crud.get_recipes_by_user(session["user_id"])
 
-    return render_template('user.html', username=user.username, recipes=recipes)
+    if "user_id" in session:
+        user = crud.get_user_by_id(session["user_id"])
+        recipes = crud.get_recipes_by_user(session["user_id"])
+
+        return render_template('user.html', username=user.username, recipes=recipes)
+    else:
+        flash('There was an error with your login! Please try again or make an account.')
+        return redirect('/')
 
 @app.route('/experiment/<recipe_id>')
 def display_recipe_details(recipe_id):

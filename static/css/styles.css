@@ -1,9 +1,36 @@
+body {
+  background-color: lightseagreen;
+
+}
+
 #graph {
     width: 400px;
     height: 300px;
     margin: 0 auto;
   }
 
-  #suggestions:hover {
-    display: block;
-  }
+#suggestions:hover {
+  display: block;
+}
+
+.container {
+  background-color: lightgray;
+}
+
+  /* nav bar  */
+
+.d-flex {
+  background-color: grey;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: lightgray;
+}
+
+.nav-link:active {
+  color: purple;
+}

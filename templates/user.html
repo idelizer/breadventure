@@ -3,29 +3,30 @@
 {% block title %}Welcome to Bread Journal!{% endblock %}
 
 {% block body %}
-    <h1>Welcome! {{ username }}</h1>
-
     <div class='container'>
-        <a href="/test-recipe">Test a recipe.</a>
-        <!-- <a href="/feed-starter">Feed your starter.</a> -->
-    </div>
+        <h1>Welcome! {{ username }}</h1>
 
-    <div class='container'>
-        {% for recipe in recipes %}
-            <ul>Recipe Details</ul>
-                <li>{{ recipe.date }}</li>
-                <li>{{ recipe.instructions }}</li>
-                <li>
-                    <a href="/experiment/{{ recipe.id }}">
-                        More details
-                    </a>
-                </li>
-                {% if recipe.is_starter_feeding is true %}
-                    <li>Is a starter feeding!</li>
-                {% endif %}
-        {% endfor %}
-    </div>
+        <div class='container'>
+            <a href="/test-recipe">Test a recipe.</a>
+            <!-- <a href="/feed-starter">Feed your starter.</a> -->
+        </div>
 
-    <!-- loop through users recipes, display all, label all containers -->
-        
+        <div class='container'>
+            {% for recipe in recipes %}
+                <ul>Recipe Details</ul>
+                    <li>{{ recipe.date }}</li>
+                    <li>{{ recipe.instructions }}</li>
+                    <li>
+                        <a href="/experiment/{{ recipe.id }}">
+                            More details
+                        </a>
+                    </li>
+                    {% if recipe.is_starter_feeding is true %}
+                        <li>Is a starter feeding!</li>
+                    {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- loop through users recipes, display all, label all containers -->
+    </div>     
 {% endblock %}
