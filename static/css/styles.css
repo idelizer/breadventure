@@ -63,7 +63,7 @@ button:hover {
 /* Welcome Page */
 
 #welcome-page {
-  background: rgba(112,128,144, 0.65);
+  background: rgba(112,128,144, 0.50);
 }
 
 #welcome {
@@ -73,6 +73,17 @@ button:hover {
 
 /* Recipe Form */
 
-#feeding:after {
+#feeding {
   color: pink;
+}
+
+input[type=checkbox]:after {
+  background-color: red;
+  color: red;
+}
+
+/* Footer */
+
+#footer {
+  background-color: rgb(255, 225, 181);
 }

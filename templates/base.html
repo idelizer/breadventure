@@ -18,6 +18,9 @@
             </ul>
         {% endif %}
     {% endwith %}
+    
+    <!-- Bootstrap JS and Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -35,42 +38,12 @@
 
 </head>
 <body>
-    <div>
-        <img src="/static/img/wheat.jpeg" width="100%" height="140">
+    <div class="container">
+        <img src="/static/img/wheat2.jpg" width="100%" height="140">
         <!-- image at center, fading into white at the sides, then white background scales to size -->
     </div>
 
     <!-- Nav Bar -->
-    <!-- <nav>
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <img src="static/img/gelatinouslullaby1500.png" width="120" height="96" role="img"> -->
-            <!-- <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg> -->
-            <!-- </a>
-
-            <ul class="nav col-10 col-lg-auto me-lg-auto mb-2 mb-md-0">
-                <li><a href="/" class="nav-link px-3">Home</a></li>
-                <li><a href="/user" class="nav-link px-2">Your Recipes</a></li> 
-                <li><a href="/test-recipe" class="nav-link px-2">Test a Recipe</a></li> 
-            </ul>
-
-            <ul class="nav col-2 col-lg-auto me-lg-auto mb-2 mb-md-0"> -->
-                <!-- How to get two links to right side - justify-content-end? -->
-                <!--  
-            </ul> -->
-
-
-            <!-- <div class="text-end">
-                <li><a href=/new-user class="nav-link px-2 text-black justify-content-end">Join</a></li>
-                <li><a href="/" class="nav-link px-2 text-black">Login</a></li>  -->
-            <!-- <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-warning">Sign-up</button> -->
-
-        <!-- </div>
-    </nav> -->
-
-
-
 
     <!-- navbar-light bg-dark -->
     <nav class="navbar navbar-expand-lg bg-secondary"> 
@@ -110,22 +83,16 @@
         </div>
       </nav>
 
-
-
-
-
-
-
-
     {% block body %}BODY GOES HERE{% endblock %}  
-    
-    {% block after_body %}
 
-    Breadventure, for all your experiments in breadmaking! Brought to you by a year in quarantine.
-    
-    {% endblock %}
-
-    <!-- Bootstrap JS and Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Footer -->
+    <div class="container-fluid" id="footer">
+      <footer class="d-flex flex-wrap align-items-center py-3 my-4 border-top">
+        <div class="col-md-12 d-flex align-items-center">
+          <span class="text-muted d-flex">Breadventure is brought to you by a year in quarantine. </span>
+          <span class="text-muted d-flex justify-content-end">© 2021 Eliza Cantwell</span>
+        </div>
+      </footer>
+    </div>
 </body>
 </html>

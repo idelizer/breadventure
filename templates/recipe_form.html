@@ -25,10 +25,44 @@
                         <label for="instructions" class="form-label">Instructions</label>
                         <textarea id="instructions" name="instructions" class="form-control" rows="4" cols="50" required></textarea>
                     </span>
+                    
+                </div>
+                <div class="row">
                     <span class="col-8 mb-3">
                         <label for="observations" class="form-label">Observations</label>
                         <textarea id="observations" name="observations" class="form-control" rows="4" cols="50"></textarea>
                     </span>
+                    <span class="col-3 mb-4">
+                        <span>
+                            <button type="button" 
+                            id="suggestions-box" 
+                            class="btn btn-secondary" 
+                            data-bs-toggle="popover" 
+                            data-bs-placement="right" 
+                            title="Suggestions" 
+                            data-bs-content=
+                            "How was the rise? 
+                            What was the ambient temp? 
+                            Did you have to adjust proofing times? 
+                            What was the scoring pattern?
+                            How long were proofing times?
+                            Prove overnight before baking? 
+                            Bake in a dutch oven?">?
+                            </button>
+                        </span>
+                            <div id="suggestions" style="display: none">
+                                Suggestions for instructions and observations:
+                                How was the rise? 
+                                What was the ambient temp? 
+                                Did you have to adjust proofing times? 
+                                What was the scoring pattern?
+                                How long were proofing times?
+                                Overnight before baking? 
+                                Bake in a dutch oven?
+                            </div>
+                        </div>
+                    </span>
+
                 </div>
                 <div class="row">
                     <span class="col-4 mb-3">
@@ -41,27 +75,13 @@
                     </span>
                 </div>
                 <div class="row">
-                    <span class="col-4 mb-3">
-                        <label for="feeding" id="feeding-label" class="form-check-label">Is this a starter feeding?</label>
-                        <input type="checkbox" id="feeding" class="form-check-input form-control" name="feeding">
+                    <span class="col-4 mb-3 custom-control custom-checkbox">
+                        <label for="feeding" id="feeding-label" class="form-check-label custom-control-label">Is this a starter feeding?</label>
+                        <input type="checkbox" id="feeding" class="form-check-input custom-control-input form-control" name="feeding">
                     </span>
-                    <span class="col-4 mb-3">
+                    <span class="col-4 mb-3 ">
                         <label for="img" class="form-label">Upload photo</label>
                         <input type="file" id="img" class="form-control" name="img" accept="image/*">
-                    </span>
-                    <span class="col-3 mb-4">
-                        <div id="suggestions-box">Suggestions
-                            <div id="suggestions" style="display: none">
-                                Suggestions for instructions and observations:
-                                How was the rise? 
-                                What was the ambient temp? 
-                                Did you have to adjust proofing times? 
-                                What was the scoring pattern?
-                                How long were proofing times?
-                                Overnight before baking? 
-                                Bake in a dutch oven?
-                            </div>
-                        </div>
                     </span>
                 </div>
                 <div class="row">

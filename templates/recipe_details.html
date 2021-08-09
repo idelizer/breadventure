@@ -10,37 +10,78 @@
 {% block title %}Welcome to Bread Journal!{% endblock %}
 
 {% block body %}
-    <div class='container'>
-        <div class='container'>
-            <ul>Recipe Details</ul>
-                <li id="date">{{ recipe.date }}</li>
+    <div class="container">
+        <div class="row mt-4 mb-3">
+            <ul>
+                <h3>
+                    Recipe Details
+                </h3>
+            </ul>
+        </div>
+        <div>
+            <div class="row mt-4 mb-3">
+                <span class="col-4">
+                    <li id="date">{{ recipe.date }}</li>
+                </span>
+                <span class="col-4">
+                    {% if recipe.name %}
+                        <li id="name">{{ recipe.name }}</li>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <span class="col-8">
                 <li id="instructions">{{ recipe.instructions }}</li>
-                {% if recipe.name %}
-                    <li id="name">{{ recipe.name }}</li>
-                {% endif %}
+            </span>
+        </div>
+        <div class="row mb-3">
+            <span class="col-8">
                 {% if recipe.observations %}
                     <li id="observations">{{ recipe.observations }}</li>
                 {% endif %}
+            </span>
+        </div>
+        <div class="row mb-3">
+            <span class="col-4">
                 {% if recipe.baking_time %}
                     <li id="baking-time">{{ recipe.baking_time }}</li>
                 {% endif %}
+            </span>
+            <span class="col-4">
                 {% if recipe.baking_temp %}
                     <li id="baking-temp">{{ recipe.baking_temp }}</li>
                 {% endif %}
-                {% if recipe.picture %}
-                    <img src="{{ recipe.picture }}" id="img"</li>
-                {% endif %}
+            </span>
+            <span class="col-4">
                 {% if recipe.is_starter_feeding is true %}
                     <li id="feeding">Is a starter feeding!</li>
                 {% endif %}
+            </span>
         </div>
-        <div class='container'>
-            <ul id="ingredients-list">Ingredients</ul>
+    <div class="container">
+        <div class="row mb-3">
+            {% if recipe.picture %}
+                <img src="{{ recipe.picture }}" id="img"</li>
+            {% endif %}
+        </div> 
+    </div>
+    <div class="container">
+        <div class='row'>
+            <ul id="ingredients-list">
+                <h5>
+                    Ingredients
+                </h5>
                 {% for amount in amounts %}
                     <li>{{ amount.ingredient.name }}</li>
                     <li>{{ amount.amount_in_grams }}</li>
                 {% endfor %}
+            </ul>
         </div>
+    </div>
+         
+                    
+        
 
         <div id="graph" class="container">
             <canvas id="graph-canvas"></canvas>

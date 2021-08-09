@@ -49,14 +49,8 @@ const generateTable = (obj, elem) => {
 };
 
 // suggestions box pop up
-document.getElementById("suggestions-box").onmouseover = function() {
-    document.getElementById('suggestions').style.display = 'block';
-};
-document.getElementById("suggestions-box").onmouseout = function() {
-    document.getElementById('suggestions').style.display = 'none';
-};
-
-
+const suggestionsEl = document.querySelector('[data-bs-toggle="popover"]');
+const suggestionsPopover = new bootstrap.Popover(suggestionsEl)
 
 // begin adding ingredients (box to add pops up)
 addIngredients.addEventListener('click', () => {
