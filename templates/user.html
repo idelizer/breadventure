@@ -11,20 +11,49 @@
             <!-- <a href="/feed-starter">Feed your starter.</a> -->
         </div>
 
-        <div class='container'>
-            {% for recipe in recipes %}
-                <ul>Recipe Details</ul>
-                    <li>{{ recipe.date }}</li>
-                    <li>{{ recipe.instructions }}</li>
-                    <li>
-                        <a href="/experiment/{{ recipe.id }}">
-                            More details
-                        </a>
-                    </li>
-                    {% if recipe.is_starter_feeding is true %}
-                        <li>Is a starter feeding!</li>
-                    {% endif %}
-            {% endfor %}
+        <div class='container'>Recipe Details
+            <div class="row mt-3">
+                <!-- <ul> -->
+                    {% for recipe in recipes %}
+                        <!-- <li> -->
+                            <div class="col-3 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            {{ recipe.name }}
+                                        </h5>
+                                
+                                        <h6 class="card-subtitle mb-2">
+                                            {{ recipe.date }}
+                                        </h6>
+                                        <p class="card-text">
+                                            {{ recipe.instructions }}
+                                        </p>
+                                        
+                                        <a href="/experiment/{{ recipe.id }}" class="card-link">
+                                            Details
+                                        </a>
+                                    </div>
+                                    {% if recipe.is_starter_feeding is true %}
+                                        <div class="card-footer">
+                                            Is a starter feeding!
+                                        </div>    
+                                    {% endif %}
+                                </div>
+                            </div>
+
+
+                            <!-- <span class="col-4">
+                                
+                                <a >
+                                    More details
+                                </a>
+                                
+                            </span> -->
+                        <!-- </li> -->
+                    {% endfor %}
+                <!-- </ul> -->
+            </div>
         </div>
 
         <!-- loop through users recipes, display all, label all containers -->

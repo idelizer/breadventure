@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class='container'>
-        <div class='container'>
+        <div class='container mt-3'>
             <h1>Please input your current experiment.</h1>
         </div>
 
@@ -42,14 +42,14 @@
                 </div>
                 <div class="row">
                     <span class="col-4 mb-3">
-                        <label for="feeding" class="form-label">Is this a starter feeding?</label>
-                        <input type="checkbox" id="feeding" class="form-control" name="feeding">
+                        <label for="feeding" id="feeding-label" class="form-check-label">Is this a starter feeding?</label>
+                        <input type="checkbox" id="feeding" class="form-check-input form-control" name="feeding">
                     </span>
                     <span class="col-4 mb-3">
                         <label for="img" class="form-label">Upload photo</label>
                         <input type="file" id="img" class="form-control" name="img" accept="image/*">
                     </span>
-                    <span class="col-3 mb-3">
+                    <span class="col-3 mb-4">
                         <div id="suggestions-box">Suggestions
                             <div id="suggestions" style="display: none">
                                 Suggestions for instructions and observations:

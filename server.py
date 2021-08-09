@@ -27,9 +27,6 @@ def view_home():
 @app.route('/login', methods=['POST'])
 def login():
     """Process users login form."""
-    # login page is not rendered, only redirects either 
-    # back to home page or to user page- is slower but 
-    # is cleaner; speed is negligible
 
     email = request.form['email']
     password = request.form['password']
@@ -202,45 +199,6 @@ def create_new_recipe():
 
     # TO BE FIXED: javascript currently expecting json
     return {"success": "success"}
-
-# @app.route('/feed-starter')
-# def feed_starter():
-#     """View form for user to input starter feeding details."""
-
-#     return render_template('feeding-form.html')
-
-# @app.route('/create-feeding', methods=['POST'])
-# def create_new_feeding():
-#     """Process form from new starter feeding form, add to database."""
-
-#     user_id = session["user_id"]
-
-#     date = request.form['date']
-#     instructions = request.form['instructions']
-#     name = request.form['name']
-#     observations = request.form['observations']
-#     baking_time = request.form['baking-time']
-#     baking_temp = request.form['baking-temp']
-#     img = request.files['img']
-
-#     if name == "":
-#         name = None
-
-#     if observations == "":
-#         observations = None
-    
-#     if baking_time == "":
-#         baking_time = None
-
-#     if baking_temp == "":
-#         baking_temp = None
-
-#     flash(f"Starter successfully fed!")
-
-#     new_feeding = crud.create_starter_feeding(user_id, date, instructions, name, observations, baking_time, baking_temp)
-#     print(new_feeding)
-
-#     return redirect('/user')
 
 
 if __name__ == '__main__':

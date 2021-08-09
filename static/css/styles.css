@@ -70,3 +70,9 @@ button:hover {
   margin-top: 5 m;
 
 }
+
+/* Recipe Form */
+
+#feeding:after {
+  color: pink;
+}

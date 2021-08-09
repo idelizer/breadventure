@@ -30,11 +30,13 @@
 
     <!-- Custom Font (Satisfy by Sideshow) -->
     <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+    
+    {% block scripts %}{% endblock %}
 
 </head>
 <body>
     <div>
-        <img src="static/img/wheat.jpeg" width="100%" height="140">
+        <img src="/static/img/wheat.jpeg" width="100%" height="140">
         <!-- image at center, fading into white at the sides, then white background scales to size -->
     </div>
 
@@ -74,8 +76,8 @@
     <nav class="navbar navbar-expand-lg bg-secondary"> 
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
-            <img src="static/img/gelatinouslullaby1500.png" width="50" height="50" class="d-inline-block align-top" alt="">
-            Bread Journal
+            <img src="/static/img/gelatinouslullaby1500.png" width="50" height="50" class="d-inline-block align-top" alt="">
+            Breadventure
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -118,7 +120,7 @@
     {% block body %}BODY GOES HERE{% endblock %}  
     
     {% block after_body %}
-    
+
     Breadventure, for all your experiments in breadmaking! Brought to you by a year in quarantine.
     
     {% endblock %}

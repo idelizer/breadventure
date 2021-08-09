@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to Bread Journal!{% endblock %}
+{% block title %}Welcome to Breadventure!{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -11,13 +11,29 @@
 
         <div class="container">
             <form action='/register-user' method='POST'>
-                <label for="username">Username.</label>
-                <input type="username" name="username" placeholder="Username" required>
-                <label for="email">Email.</label>
-                <input type="email" name="email" required> 
-                <label for="password">Password.</label>
-                <input type="password" name="password" required>
-                <button type="submit">Make my account!</button> 
+                <div class="row">
+                    <span class="col-4 mb-3 offset 8">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="username" class="form-control" name="username" placeholder="Username" required>
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col-4 mb-3 offset 8">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" required> 
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col-4 mb-3 offset 8">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col-4 mb-3 offset 8">
+                        <button type="submit" class="form-control">Make my account!</button> 
+                    </span>
+                </div>      
             </form>
         </div>       
     </div>  

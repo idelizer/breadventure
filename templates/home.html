@@ -7,21 +7,33 @@
         <div class='row'>
             <h1 id="welcome" class="col-12 position-relative">Welcome!</h1>
         </div>
+        <div>
+            <h3>Please log in:</h1>
+        </div>
 
-        <div class='row ' id="login-form">
+        <div class='container' id="login-form">
             <form action='/login' method='POST'>
-                <div class="col-12">
-                    <label class="home-form-label">Email.</label>
-                    <input type="text" name="email"> 
+                <div class="row">
+                    <span class="col-4 mb-3">
+                        <label for="new-email" class="form-label">Email</label>
+                        <input type="text" id="new-email" class="form-control" name="email"> 
+                    </span>
+                    <span class="col-4 mb-3">
+                        <label for="new-password" class="form-label">Password</label>
+                        <input type="password" id="new-password" class="form-control" name="password">
+                    </span>
                 </div>
-                <div>
-                    <label class="home-form-label">Password.</label>
-                    <input type="password" name="password">
+                
+                <div class="row">
+                    <span class="col-4 mb-3">
+                        <button type='submit' class="form-control" >Log in.</button>
+                    </span>
                 </div>
-                <div>
-                    <button type='submit'>Log in.</button>
-                    Or
-                    <a href='/new-user'> make an account.</a>
+                <div class="row">
+                    <span class="col-4 mb-3">
+                        Or
+                        <a href='/new-user'> make an account.</a>
+                    </span>
                 </div>
             </form>
         </div>
