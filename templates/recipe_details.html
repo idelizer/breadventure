@@ -67,17 +67,25 @@
         </div> 
     </div>
     <div class="container">
-        <div class='row'>
-            <ul id="ingredients-list">
-                <h5>
-                    Ingredients
-                </h5>
-                {% for amount in amounts %}
-                    <li>{{ amount.ingredient.name }}</li>
-                    <li>{{ amount.amount_in_grams }}</li>
-                {% endfor %}
-            </ul>
+        <div class="row">
+            <table class="table table-secondary table-striped table-bordered" style="width: 65%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Ingredient</th>
+                        <th scope="col">Amount in Grams</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for amount in amounts %}
+                        <tr>
+                            <td>{{ amount.ingredient.name }}</td>
+                            <td>{{ amount.amount_in_grams }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
+    </div>
     </div>
          
                     
@@ -85,12 +93,12 @@
 
         <div id="graph" class="container">
             <canvas id="graph-canvas"></canvas>
-            <!-- <svg></svg> -->
+            
         </div>
 
         <div class='container'>
             <form>
-                <button type="button" id="delete">Delete Recipe.</button>
+                <button type="button" id="delete" class="btn btn-secondary">Delete Recipe.</button>
             </form>
         </div>
 

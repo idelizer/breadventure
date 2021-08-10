@@ -62,7 +62,7 @@ addIngredients.addEventListener('click', () => {
         '<label for="ingredient-amount" class="form-label">Amount in Grams</label>' +
         '<input type="number" id="ingredient-amount" class="form-control">' +
         '</span> <span class="col-1 mb-3">' +
-        '<button type="button" id="push-ingredient" class="form-control">Add</button>'
+        '<button type="button" id="push-ingredient" class="form-control btn-secondary">Add</button>'
         '</span> <div>';
 
     addIngredients.style.display = "none";

@@ -2,7 +2,14 @@ body {
   background: url(/static/img/Eliza_flour_10.jpg) no-repeat center center;
   background-size: cover;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: rgb(190, 200, 205) 
+  color: rgb(190, 200, 205);
+  min-height: 100vh;
+}
+
+/* buttons */
+.btn, .form-control {
+
+
 }
 
 #graph {
@@ -28,7 +35,12 @@ button {
 }
 
 button:hover {
-  color: pink;
+  background-color: rgb(214, 148, 214);
+  color: black;
+}
+
+button:active {
+  color: purple
 }
 
   /* Nav Bar  */

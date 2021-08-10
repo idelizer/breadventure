@@ -7,11 +7,18 @@
         <h1>Welcome {{ username }}! </h1>
 
         <div class='container'>
-            <a href="/test-recipe">Test a recipe.</a>
-            <!-- <a href="/feed-starter">Feed your starter.</a> -->
+            <div class="row">
+                
+            </div>
         </div>
 
-        <div class='container'>Recipe Details
+        <div class='container'>
+            <div class="row">
+                <h5 class="col-3 mb-3">
+                    Your Recipe Details
+                </h5>
+                <a href="/test-recipe" class="col-3 offset-6 mb-3">Test a recipe.</a
+            </div>
             <div class="row mt-3">
                 <!-- <ul> -->
                     {% for recipe in recipes %}
