@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 data: {
                     labels: amountNames, 
                     datasets: [{                                    // array of dataset objects
-                        label: "Baker's Percentage",               // labels on x axis
+                        label: "to remove",               // labels on x axis
                         data: amountJson,                           // size of each bar
                         backgroundColor: backgroundColors,
                         borderColor: borderColors,
@@ -100,6 +100,16 @@ document.addEventListener("DOMContentLoaded", function() {
                                 fontColor: 'rgba(255, 255, 255, 1)'
                             },
                         }],
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        callbacks: {
+                           label: function(tooltipItem) {
+                                  return tooltipItem.yLabel;
+                           }
+                        }
                     }   
                 }
             }
