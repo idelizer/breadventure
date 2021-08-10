@@ -5,17 +5,11 @@ body {
   color: rgb(190, 200, 205) 
 }
 
-
-
 #graph {
     width: 400px;
     height: 300px;
     margin: 0 auto;
   }
-
-#suggestions:hover {
-  display: block;
-}
 
 /* .container {
   background-color: grey;
@@ -73,14 +67,6 @@ button:hover {
 
 /* Recipe Form */
 
-#feeding {
-  color: pink;
-}
-
-input[type=checkbox]:after {
-  background-color: red;
-  color: red;
-}
 
 /* Footer */
 
