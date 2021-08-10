@@ -27,9 +27,9 @@
                     </span>
                 </div>
                 <div class="row">
-                    <span class="col-8 mb-3">
+                    <span class="col-8">
                         <label for="add-ingredients" class="form-label">Add your ingredients</label>
-                        <button type="button" id="add-ingredients" class="form-control">Add Ingredients</button>
+                        <button type="button" id="add-ingredients" class="form-control mb-3">Add Ingredients</button>
                     </span>
                 </div>
                 <div class="containter" id="ingredients-input"></div>
@@ -50,7 +50,7 @@
                         </span>
                         <span class="col-2 custom-control custom-checkbox">
                             <label for="feeding" id="feeding-label" class="form-check-label custom-control-label">Is this a starter feeding?</label>
-                            <input type="checkbox" id="feeding" class="form-check-input custom-control-input form-control mb-3" name="feeding">
+                            <input type="checkbox" id="feeding" class="form-check-input custom-control-input form-control mt-2 mb-3" name="feeding">
                         </span>
                         <span class="col-2">
                             <label for="img" class="form-label">Upload photo</label>
@@ -102,10 +102,5 @@
 
 <!-- if sourcing multiple javascript files, put one with functions first; makes those functions globally available to following js files -->
 
- <!-- {% for ingredient in ingredients %}
-                <option value="{{ ingredient }}">{{ ingredient }}</option>
-            {% endfor %} -->
-
 <!-- for uploading pictures, use html input attribute accept="image/*" -->
 
-<!-- would input attribute form="create-recipe-form" allow all inputs to be grabbed from backend? -->
