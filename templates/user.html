@@ -8,60 +8,36 @@
 
         <div class='container'>
             <div class="row">
-                
-            </div>
-        </div>
-
-        <div class='container'>
-            <div class="row">
                 <h5 class="col-3 mb-3">
-                    Your recipe details
+                    Your Recipes
                 </h5>
             </div>
+        </div> 
+        <div class="container">   
             <div class="row mt-3">
-                <!-- <ul> -->
-                    {% for recipe in recipes %}
-                        <!-- <li> -->
-                            <div class="col-3 mb-4">
-                                <div class="card h-100">
-                                    <div class="card-body" style="color: rgb(63, 63, 63);">
-                                        <h5 class="card-title">
-                                            {{ recipe.name }}
-                                        </h5>
-                                
-                                        <h6 class="card-subtitle mb-2">
-                                            {{ recipe.date }}
-                                        </h6>
-                                        <p class="card-text">
-                                            {{ recipe.instructions }}
-                                        </p>
-                                        
-                                        <a href="/experiment/{{ recipe.id }}" class="card-link link-danger">
-                                            Details
-                                        </a>
-                                    </div>
-                                    {% if recipe.is_starter_feeding is true %}
-                                        <div class="card-footer">
-                                            Is a starter feeding!
-                                        </div>    
-                                    {% endif %}
-                                </div>
-                            </div>
-
-
-                            <!-- <span class="col-4">
-                                
-                                <a >
-                                    More details
+                {% for recipe in recipes %}
+                    <div class="col-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body" style="color: rgb(63, 63, 63);">
+                                <h5 class="card-title">
+                                    {{ recipe.name }}
+                                </h5>
+                                <h6 class="card-subtitle mb-2">
+                                    {{ recipe.date }}
+                                </h6> 
+                                <a href="/experiment/{{ recipe.id }}" class="card-link link-danger">
+                                    Details
                                 </a>
-                                
-                            </span> -->
-                        <!-- </li> -->
-                    {% endfor %}
-                <!-- </ul> -->
+                            </div>
+                            {% if recipe.is_starter_feeding is true %}
+                                <div class="card-footer" style="color: rgb(59, 59, 59)">
+                                    Is a starter feeding!
+                                </div>    
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-
-        <!-- loop through users recipes, display all, label all containers -->
     </div>     
 {% endblock %}

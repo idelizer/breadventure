@@ -9,35 +9,11 @@ body {
   flex-direction: column;
 }
 
-
-
-/* buttons */
-.btn, .form-control {
-
-
-}
-
 #graph {
     width: 400px;
     height: 300px;
     margin: 0 auto;
   }
-
-/* .container {
-  background-color: grey;
-} */
-
-a {
-  color: green;
-}
-
-a:hover {
-  color:red;
-}
-
-button {
-  color: blue;
-}
 
 button:hover {
   background-color: rgb(214, 148, 214);
@@ -45,7 +21,7 @@ button:hover {
 }
 
 button:active {
-  color: purple
+  color: rgb(128, 0, 128)
 }
 
   /* Nav Bar  */
