@@ -83,16 +83,14 @@
         </div>
       </nav>
 
-    {% block body %}BODY GOES HERE{% endblock %}  
+    <div style="flex-grow: 1;">
+      {% block body %}BODY GOES HERE{% endblock %}
+    </div>
 
     <!-- Footer -->
-    <div class="container-fluid " id="footer">
-      <footer class="d-flex flex-wrap align-items-center py-3 my-4 border-top">
-        <div class="col-md-12 d-flex align-items-center">
-          <span class="text-muted d-flex">Breadventure is brought to you by a year in quarantine. © 2021 Eliza Cantwell</span>
-          <span class="text-muted d-flex justify-content-end"></span>
-        </div>
+  
+      <footer id="footer" class="py-2 px-2 border-top text-muted text-center">
+              Breadventure is brought to you by a year in quarantine. © 2021 Eliza Cantwell
       </footer>
-    </div>
 </body>
 </html>

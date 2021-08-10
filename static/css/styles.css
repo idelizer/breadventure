@@ -1,10 +1,15 @@
 body {
   background: url(/static/img/Eliza_flour_10.jpg) no-repeat center center;
   background-size: cover;
+  background-color: black;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: rgb(190, 200, 205);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+
 
 /* buttons */
 .btn, .form-control {
@@ -67,10 +72,6 @@ button:active {
 }
 
 /* Welcome Page */
-
-#welcome-page {
-  background: rgba(112,128,144, 0.50);
-}
 
 #welcome {
   margin-top: 5 m;
