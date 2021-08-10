@@ -57,7 +57,8 @@ addIngredients.addEventListener('click', () => {
     // when Add Ingredients clicked, creates new input box and Add button (could use document.createElement)
     ingredientInput.innerHTML = '<div class="row"> <span class="col-4 mb-3">' + 
         '<label for="ingredient-name" class="form-label">Ingredient Name</label>' +
-        '<input type="text" id="ingredient-name" class="form-control">' +
+        '<input type="text" id="ingredient-name" class="form-control" list="ingrResults">' +
+        '<datalist id="ingrResults"></datalist>' +
         '</span> <span class="col-4 mb-3">' +
         '<label for="ingredient-amount" class="form-label">Amount in Grams</label>' +
         '<input type="number" id="ingredient-amount" class="form-control">' +
@@ -81,31 +82,53 @@ addIngredients.addEventListener('click', () => {
                 searchResult.push(result[0]);        
         };
   
-        // if user has inputted search char, display resulting list
-        const searchDisplay = document.getElementById("ingredients-search"); // div
-        searchDisplay.style.display = "";
-        // if user deletes input, display is hidden
-        if(dbIngredients[0].length === searchResult.length)
-            searchDisplay.style.display = "none";
+        // /////////////
+        // // if user has inputted search char, display resulting list
+        // const searchDisplay = document.getElementById("ingredients-search"); // div
+        // searchDisplay.style.display = "";
+        // // if user deletes input, display is hidden
+        // if(dbIngredients[0].length === searchResult.length)
+        //     searchDisplay.style.display = "none";
+        // /////////////
 
-        // generate html list of ingredients from search result
-        const makeListItem = (ingredient, index) => {
-            return ("<li id='result" + index + "' value='" + ingredient + "'>" + ingredient + "</li>")
+        // generate html option for each ingredient in search result
+        const makeOptionItem = (ingredient) => {
+            return ('<option value="' + ingredient + '">');
+        };
+
+        // generate string of html options of all ingr results
+        const makeAllOptions = (ingredients) => {
+            let listOptions = "";
+            for (const ingredient of ingredients) {
+                const option = makeOptionItem(ingredient);
+                listOptions = listOptions + option;
+            }
+            return listOptions;
+        };
+
+        console.log(makeAllOptions(searchResult));
+        document.getElementById("ingrResults").innerHTML = makeAllOptions(searchResult);
+        console.log("...")
+       
+        // /////////////////////////////////
+        // // generate html list of ingredients from search result
+        // const makeListItem = (ingredient, index) => {
+        //     return ("<li id='result" + index + "' value='" + ingredient + "'>" + ingredient + "</li>")
             
-        };
-        
-        const makeHtmlList = (ingredients) => {
-            let listItems = "";
-            for (const index in ingredients) {
-                const listIngredient = makeListItem(ingredients[index], index);
-                listItems = listItems + listIngredient;
-            };
-            return listItems;
-            //document.getElementById("search-list").innerHTML() 
-        };
-        document.getElementById("search-list").innerHTML = makeHtmlList(searchResult);
+        // };
 
-        console.log(".....");
+        // // generate html string of all ingr results as list items
+        // const makeHtmlList = (ingredients) => {
+        //     let listItems = "";
+        //     for (const index in ingredients) {
+        //         const listIngredient = makeListItem(ingredients[index], index);
+        //         listItems = listItems + listIngredient;
+        //     };
+        //     return listItems;
+        // };
+
+        // document.getElementById("search-list").innerHTML = makeHtmlList(searchResult);
+        // /////////////////////
 
     });
 
