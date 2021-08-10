@@ -6,7 +6,6 @@ const recipeIdJSON = {"recipe_id": recipeId};
 
 
 // bakers percentage bar graph
-const graphContainer = document.getElementById("graph"); //
 const graphCanvas = document.getElementById("graph-canvas");
 
 // set colors for bar graph
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         backgroundColor: backgroundColors,
                         borderColor: borderColors,
                         borderWidth: 3,
-                        hoverBorderWidth: 5
+                        hoverBorderWidth: 5,
                     }]
                 },
                 options: {

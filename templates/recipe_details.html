@@ -15,10 +15,18 @@
             <h3 class="col-11">Recipe Details</h3>
             <a href='/user' class="col-1 link-warning">Back</a>
         </div>
+        <div class="row">
+            <h5 class="col-12" id="name">
+                {{ recipe.name }}
+            </h5>
+            <h6 class="col-12 mb-4" id="date">
+                {{ recipe.date }}
+            </h6>
+        </div>
         <div class="row mb-3">
-            <ul class="list-group col-4">
-                <li class="list-group-item" id="date">{{ recipe.date }}</li>
-                <li class="list-group-item" id="name">{{ recipe.name }}</li>
+            <ul class="list-group col-5">
+                <li class="list-group-item"><strong>Instructions</strong></li>
+                <li class="list-group-item" id="instructions">{{ recipe.instructions }}</li>
                 {% if recipe.baking_time %}
                     <li class="list-group-item"></li>
                     <li class="list-group-item" id="baking-temp">Baking temp: {{ recipe.baking_temp }} °F</li>
@@ -30,59 +38,50 @@
                     <li class="list-group-item"></li>
                     <li class="list-group-item" id="feeding">Is a starter feeding!</li>
                 {% endif %}
-            </ul>
-            <ul class="list-group col-6 offset-1">
-                <li class="list-group-item">Instructions</li>
-                <li class="list-group-item" id="instructions">{{ recipe.instructions }}</li>
                 {% if recipe.observations %}
                     <li class="list-group-item"></li>
-                    <li class="list-group-item">Observations</li>
+                    <li class="list-group-item"><strong>Observations</strong></li>
                     <li class="list-group-item" id="observations">{{ recipe.observations }}</li>
                 {% endif %}
             </ul>
+            <div class="col-5 offset-1">
+                <table class="table table-secondary table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ingredient</th>
+                            <th scope="col">Amount in Grams</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for amount in amounts %}
+                            <tr>
+                                <td>{{ amount.ingredient.name }}</td>
+                                <td>{{ amount.amount_in_grams }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="container">
-        <div class="row mb-3">
+        <div class="row">
+            <div class="col-8 my-4">
+                <canvas id="graph-canvas" height="100%"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-3">
             {% if recipe.picture %}
-                <img src="{{ recipe.picture }}" id="img"</li>
+                <img src="{{ recipe.picture }}" id="img" class="col-8">
             {% endif %}
         </div> 
     </div>
-    <div class="container">
-        <div class="row">
-            <table class="table table-secondary table-striped table-bordered" style="width: 65%;">
-                <thead>
-                    <tr>
-                        <th scope="col">Ingredient</th>
-                        <th scope="col">Amount in Grams</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for amount in amounts %}
-                        <tr>
-                            <td>{{ amount.ingredient.name }}</td>
-                            <td>{{ amount.amount_in_grams }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>  
-    <div id="graph" class="container">
-        <div class="row">
-            <canvas id="graph-canvas" class="col-6"></canvas>
-        </div>
+    <div class='container my-4'>
+        <form>
+            <button type="button" id="delete" class="btn btn-secondary">Delete Recipe</button>
+        </form>
     </div>
-
-        <div class='container my-4'>
-            <form>
-                <button type="button" id="delete" class="btn btn-secondary">Delete Recipe</button>
-            </form>
-        </div>
-
-        <div class='container'>
-        </div>
-        
-        <script src="/static/js/recipe_details.js" type="text/javascript"></script>
+    <script src="/static/js/recipe_details.js" type="text/javascript"></script>
 {% endblock %}
