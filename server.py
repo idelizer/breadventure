@@ -79,14 +79,11 @@ def get_amounts():
     for amount in amounts:
         if "flour" in amount.ingredient.name:
             ratio += amount.amount_in_grams
-            print()
-            print(ratio)
-            print()
+            
     # for each ingredient, set ratio to grams to get percent
     for amount in amounts:
         percentage = (amount.amount_in_grams / ratio)
         amount.percentage = int(percentage * 100)
-        print(amount.percentage)
  
     amount_data = []
     for amount in amounts:
@@ -189,7 +186,6 @@ def create_new_recipe():
 
     # add data to recipe table
     new_recipe = crud.create_recipe(user_id, date, instructions, name, observations, baking_time, baking_temp, img_url, is_feeding)
-    print(new_recipe)
 
     # add data to middle table
     for index, ingr_id in enumerate(ingr_ids):

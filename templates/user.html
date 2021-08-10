@@ -15,7 +15,7 @@
         <div class='container'>
             <div class="row">
                 <h5 class="col-3 mb-3">
-                    Your Recipe Details
+                    Your recipe details
                 </h5>
             </div>
             <div class="row mt-3">
@@ -24,7 +24,7 @@
                         <!-- <li> -->
                             <div class="col-3 mb-4">
                                 <div class="card h-100">
-                                    <div class="card-body">
+                                    <div class="card-body" style="color: rgb(63, 63, 63);">
                                         <h5 class="card-title">
                                             {{ recipe.name }}
                                         </h5>
@@ -36,7 +36,7 @@
                                             {{ recipe.instructions }}
                                         </p>
                                         
-                                        <a href="/experiment/{{ recipe.id }}" class="card-link link-secondary">
+                                        <a href="/experiment/{{ recipe.id }}" class="card-link link-danger">
                                             Details
                                         </a>
                                     </div>

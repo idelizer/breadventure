@@ -1,8 +1,8 @@
 body {
-  background: url(/static/img/Eliza_flour_10.jpg) no-repeat center center;
+  background: url(/static/img/flour.jpg) no-repeat center center;
   background-size: cover;
   background-color: black;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: rgb(190, 200, 205);
   min-height: 100vh;
   display: flex;
@@ -85,4 +85,10 @@ button:active {
 
 #footer {
   background-color: rgb(255, 225, 181);
+}
+
+/* User */
+
+.card-link {
+  color: purple
 }
