@@ -43,7 +43,7 @@ const generateRow = (obj) => {
 const generateTable = (obj, elem) => {
     const allRows = obj.map(generateRow);
     const allRowsStr = allRows.join("");
-    const headers = '<tr id="headers"><th>Ingredient</th><th>Amount</th></tr>'
+    const headers = '<thead><tr><th scope="col">Ingredient</th><th scope="col">Amount in Grams</th></tr></thead>'
 
     elem.innerHTML = headers + allRowsStr
 };
@@ -91,8 +91,7 @@ addIngredients.addEventListener('click', () => {
         // generate html list of ingredients from search result
         const makeListItem = (ingredient, index) => {
             return ("<li id='result" + index + "' value='" + ingredient + "'>" + ingredient + "</li>")
-            // return ("<li value='" + ingredient + "'>" + ingredient + "</li>")
-            // return ("<li>" + ingredient + "</li>")
+            
         };
         
         const makeHtmlList = (ingredients) => {
@@ -125,9 +124,7 @@ addIngredients.addEventListener('click', () => {
         if ((inputIngredient.value !== "") && (inputAmount.value !== "")) {     // handle case where user inputs empty fields
             array: newRecipeIngredients.push({ingredientName: inputIngredient.value, ingredientAmount: inputAmount.value});
             // obj: newRecipeIngredients.inputIngredient = inputAmount;
-        };
-        console.log(newRecipeIngredients);
-        
+        }; 
          
         generateTable(newRecipeIngredients, ingredientsTable);
 

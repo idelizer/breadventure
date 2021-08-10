@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class='container'>
-        <div class='container mt-3'>
+        <div class='row my-3'>
             <h1>Please input your current experiment.</h1>
         </div>
 
@@ -28,6 +28,43 @@
                 </div>
                 <div class="row">
                     <span class="col-8 mb-3">
+                        <label for="add-ingredients" class="form-label">Add your ingredients</label>
+                        <button type="button" id="add-ingredients" class="form-control">Add Ingredients</button>
+                    </span>
+                </div>
+                <div class="containter" id="ingredients-input"></div>
+                
+                <div id="ingredients-search" style="display: none;">
+                    <ul id="search-list">list</ul>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <span class="col-2">
+                            <label for="baking-temp" class="form-label">Baking temperature</label>
+                            <input type="number" id="baking-temp" class="form-control mb-3" name="bakingtemp">
+                        </span>
+                        <span class="col-2">
+                            <label for="baking-time" class="form-label">Baking time</label>
+                            <input type="number" id="baking-time" class="form-control mb-3" name="bakingtime">
+                        </span>
+                        <span class="col-2 custom-control custom-checkbox">
+                            <label for="feeding" id="feeding-label" class="form-check-label custom-control-label">Is this a starter feeding?</label>
+                            <input type="checkbox" id="feeding" class="form-check-input custom-control-input form-control mb-3" name="feeding">
+                        </span>
+                        <span class="col-2">
+                            <label for="img" class="form-label">Upload photo</label>
+                            <input type="file" id="img" class="form-control mb-3" name="img" accept="image/*">
+                        </span>
+                    </div>
+                    <div class="col-4 offset-1 mt-4" id="ingredients-display">
+                        <table class="table table-secondary table-striped table-bordered" id="ingredients-table"></table>
+                    </div>
+                </div>
+
+                
+                <div class="row">
+                    <span class="col-8 mb-3">
                         <label for="observations" class="form-label">Observations</label>
                         <textarea id="observations" name="observations" class="form-control" rows="4" cols="50"></textarea>
                     </span>
@@ -48,41 +85,6 @@
                         Bake in a dutch oven?">?
                         </button>
                     </span>
-                </div>
-
-                <div class="row">
-                    <span class="col-4 mb-3">
-                        <label for="baking-time" class="form-label">Baking time</label>
-                        <input type="number" id="baking-time" class="form-control" name="bakingtime">
-                    </span>
-                    <span class="col-4 mb-3">
-                        <label for="baking-temp" class="form-label">Baking temperature</label>
-                        <input type="number" id="baking-temp" class="form-control" name="bakingtemp">
-                    </span>
-                </div>
-                <div class="row">
-                    <span class="col-4 mb-3 custom-control custom-checkbox">
-                        <label for="feeding" id="feeding-label" class="form-check-label custom-control-label">Is this a starter feeding?</label>
-                        <input type="checkbox" id="feeding" class="form-check-input custom-control-input form-control" name="feeding">
-                    </span>
-                    <span class="col-4 mb-3 ">
-                        <label for="img" class="form-label">Upload photo</label>
-                        <input type="file" id="img" class="form-control" name="img" accept="image/*">
-                    </span>
-                </div>
-                <div class="row">
-                    <span class="col-8 mb-3">
-                        <label for="add-ingredients" class="form-label">Ingredients</label>
-                        <button type="button" id="add-ingredients" class="form-control">Add Ingredients</button>
-                    </span>
-                </div>
-    
-                <div class="containter" id="ingredients-input"></div>
-                <div class="containter" id="ingredients-display">
-                    <table id="ingredients-table"></table>
-                </div>
-                <div id="ingredients-search" style="display: none;">
-                    <ul id="search-list">list</ul>
                 </div>
 
                 <div class="row">
