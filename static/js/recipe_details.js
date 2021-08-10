@@ -11,16 +11,28 @@ const graphCanvas = document.getElementById("graph-canvas");
 
 // set colors for bar graph
 const backgroundColors = [
-    'rgba(255, 99, 132, 0.2)',
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(255, 206, 86, 0.2)',
-    'rgba(75, 192, 192, 0.2)',
+    'rgba(182, 99, 169, .8)',
+    'rgba(233, 168, 109, .8)',
+    'rgba(132, 188, 167, .8)',
+    'rgba(217, 105, 99, .8)',
+    'rgba(137, 122, 201, .8)',
+    'rgba(231, 198, 110, .8)',
+    'rgba(185, 129, 159, .8)',
+    'rgba(170, 188, 126, .8)',
+    'rgba(217, 118, 89, .8)',
+    'rgba(146, 111, 178, .8)',
 ];
 const borderColors = [
-    'rgba(255, 99, 132, 1)',
-    'rgba(54, 162, 235, 1)',
-    'rgba(255, 206, 86, 1)',
-    'rgba(75, 192, 192, 1)',
+    'rgba(182, 99, 169, 1)',
+    'rgba(233, 168, 109, 1)',
+    'rgba(132, 188, 167, 1)',
+    'rgba(217, 105, 99, 1)',
+    'rgba(137, 122, 201, 1)',
+    'rgba(231, 198, 110, 1)',
+    'rgba(185, 129, 159, 1)',
+    'rgba(170, 188, 126, 1)',
+    'rgba(217, 118, 89, 1)',
+    'rgba(146, 111, 178, 1)',
 ];
 
 // given recipe ID, get json amount data
@@ -47,19 +59,17 @@ document.addEventListener("DOMContentLoaded", function() {
         return data})
     .then(data => {
         if (data.data.length !== 0) {
-            console.log(data.data.length);
-            console.log("working")
 
             const testChart = new Chart(graphCanvas, {
                 type: "bar",
                 data: {
                     labels: amountNames, 
                     datasets: [{                                    // array of dataset objects
-                        label: "hello",                             // labels on x axis
+                        label: "Baker's Percentage",               // labels on x axis
                         data: amountJson,                           // size of each bar
                         backgroundColor: backgroundColors,
                         borderColor: borderColors,
-                        borderWidth: 1,
+                        borderWidth: 3,
                         hoverBorderWidth: 5
                     }]
                 },
@@ -69,21 +79,29 @@ document.addEventListener("DOMContentLoaded", function() {
                             scaleLabel: {
                                 display: true,
                                 labelString: "Ingredients",
-                                // color: 'rgba(255, 99, 132, 1)',
-                                // align: "end" 
+                                fontSize: 22,
+                                fontColor: 'rgba(255, 255, 255, 1)',
                             },
+                            ticks: {
+                                fontSize: 18,
+                                fontColor: 'rgba(255, 255, 255, 1)'
+                            }
                         }],
                         yAxes: [{
                             ticks: {
                                 min: 0,
-                                max: 120
+                                max: 120,
+                                fontSize: 18,
+                                fontColor: 'rgba(255, 255, 255, 1)'
                             },
                             scaleLabel: {
                                 display: true,
-                                labelString: "Baker's Percentage"
+                                labelString: "Baker's Percentage",
+                                fontSize: 22,
+                                fontColor: 'rgba(255, 255, 255, 1)'
                             },
-                        }]
-                    }
+                        }],
+                    }   
                 }
             }
         );
