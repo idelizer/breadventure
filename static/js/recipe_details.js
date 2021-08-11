@@ -129,12 +129,8 @@ document.getElementById("delete").addEventListener('click', (evt) => {
         }
     })
     .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        window.location.assign("/user");
-    })
-    .catch((error) => {
-        console.error('Error:', error)
+    .then((data) => {
+        window.location.assign("/user")
     });
 });
 

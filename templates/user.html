@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to Bread Journal!{% endblock %}
+{% block title %}Breadventure - View Recipes!{% endblock %}
 
 {% block body %}
     <div class='container mt-3'>
@@ -13,6 +13,17 @@
                 </h5>
             </div>
         </div> 
+        {% if recipes == [] %}
+            <div class="container">
+                <div class="row">
+                    <span>
+                        You don't have any recipes yet! 
+                        <a href='/test-recipe' class="link-warning">Make your first recipe.</a>
+                    </span>
+                </div>
+            </div>
+        {% endif %}
+
         <div class="container">   
             <div class="row mt-3">
                 {% for recipe in recipes %}

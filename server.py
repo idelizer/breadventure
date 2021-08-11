@@ -90,6 +90,8 @@ def delete_recipe():
     
     recipe_id = request.json.get("recipe_id")
     deleted_msg = crud.delete_recipe(recipe_id)
+    
+    flash('Recipe successfully deleted.')
 
     return "Success!"
 

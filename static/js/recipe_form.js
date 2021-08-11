@@ -162,8 +162,7 @@ document.getElementById("create-recipe-form").addEventListener('submit', (evt) =
     evt.preventDefault();
     // experiment with changing submit to button, 
 
-    // grab all html fields
-    // process empty strings on frontend to send back smaller object?
+    // grab all html field
 
     // element.files --> array to access index[0]
     // const picture = makeImageObject(img);
@@ -187,9 +186,6 @@ document.getElementById("create-recipe-form").addEventListener('submit', (evt) =
     fetch("/create-recipe", {
         method: "POST",
         body: formDataRecipe,
-        // headers: {
-        //     'Content-Type': 'application/json'  // could be application/formdata??
-        //   }
     })
     .then(response => response.json())
     .then(data => {
@@ -199,7 +195,6 @@ document.getElementById("create-recipe-form").addEventListener('submit', (evt) =
     .catch((error) => {
         console.error('Error:', error)
     });
-    
     
     // create json object from all fields and newRecipeIngredients
     // send complete json object to backend via ajax request or fetch

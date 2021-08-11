@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block scripts %}
-    {# D3 #}   
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
     {# ChartJS #}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+
 {% endblock %}
 
-{% block title %}Welcome to Bread Journal!{% endblock %}
+{% block title %}Breadventure - View Recipe!{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -83,5 +83,6 @@
             <button type="button" id="delete" class="btn btn-secondary">Delete Recipe</button>
         </form>
     </div>
+
     <script src="/static/js/recipe_details.js" type="text/javascript"></script>
 {% endblock %}

@@ -8,17 +8,6 @@
 
     <title>{% block title %}TITLE GOES HERE{% endblock %}</title>
 
-    <!-- Flask flashed messages -->
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class=flashes>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-
     <!-- Bootstrap JS and Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -79,6 +68,7 @@
         </div>
       </nav>
 
+    <!-- Flask flashed messages -->
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <div class="alert alert-warning flashes d-flex justify-content-center" role="alert">              
