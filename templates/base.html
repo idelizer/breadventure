@@ -79,6 +79,16 @@
         </div>
       </nav>
 
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-warning flashes d-flex justify-content-center" role="alert">              
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
     <div style="flex-grow: 1;">
       {% block body %}BODY GOES HERE{% endblock %}
     </div>

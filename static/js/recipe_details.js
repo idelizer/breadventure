@@ -4,7 +4,6 @@ console.log('JS IS WORKING')
 const recipeId = window.location.pathname.slice(12);
 const recipeIdJSON = {"recipe_id": recipeId};
 
-
 // bakers percentage bar graph
 const graphCanvas = document.getElementById("graph-canvas");
 
@@ -112,10 +111,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
                     }   
                 }
-            }
-        );
-    };  
-    
+            })
+        }
+    });  
+});
 
 // delete recipe
 document.getElementById("delete").addEventListener('click', (evt) => {
@@ -132,10 +131,10 @@ document.getElementById("delete").addEventListener('click', (evt) => {
     .then(response => response.text())
     .then(data => {
         console.log(data);
-        window.location.assign("/user")
-    });
-});
-    
+        window.location.assign("/user");
+    })
+    .catch((error) => {
+        console.error('Error:', error)
     });
 });
 

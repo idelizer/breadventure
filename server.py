@@ -84,7 +84,7 @@ def get_amounts():
     return jsonify({'data': amount_data})
 
 
-@app.route('/delete-recipe', )
+@app.route('/delete-recipe', methods=['POST'])
 def delete_recipe():
     """Given a recipe id, delete recipe from db."""
     
