@@ -3,6 +3,3 @@ env/
 __pycache__
 .DS_Store
 secrets.sh
-
-spoonacular.py
-cloudinary.py

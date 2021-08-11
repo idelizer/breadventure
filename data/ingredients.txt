@@ -2,6 +2,7 @@ flour
 all purpose flour
 whole wheat flour
 self-rising flour
+white flour
 bread flour
 gluten flour
 semolina flour
@@ -35,9 +36,12 @@ brewers yeast
 nutritional yeast
 wild yeast
 sourdough starter
+poolish
+biga
 baking soda
 baking powder
 balsamic vinegar
+sea salt
 salt
 pepper
 cardamom

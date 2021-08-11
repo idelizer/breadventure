@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             },
                             scaleLabel: {
                                 display: true,
-                                labelString: "Baker's Percentage",
+                                labelString: "Baker's %",
                                 fontSize: 22,
                                 fontColor: 'rgba(255, 255, 255, 1)'
                             },
