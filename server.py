@@ -184,6 +184,6 @@ def create_new_recipe():
     return {"success": "success"}
 
 
+connect_to_db(app)
 if __name__ == '__main__':
-    connect_to_db(app)
     app.run(host='0.0.0.0', port=os.environ.get("PORT", "5000"), debug=True)
