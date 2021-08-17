@@ -1,7 +1,9 @@
 """Models for bread baking journal."""
 
 from flask_sqlalchemy import SQLAlchemy
-import requests
+import requests, os
+
+db_url = os.environ.get("DATABASE", 'postgresql:///breadjournal')
 
 db = SQLAlchemy()
 
@@ -79,7 +81,7 @@ class Ingredient(db.Model):
         return f'<Ingredient id={self.id} name={self.name}>'
 
 
-def connect_to_db(app, db_uri='postgresql:///breadjournal', echo=True):
+def connect_to_db(app, db_uri=db_url, echo=True):
     """Connect the database to Flask app."""
 
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri

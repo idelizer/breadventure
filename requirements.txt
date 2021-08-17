@@ -4,6 +4,7 @@ click==7.1.2
 cloudinary==1.26.0
 Flask==1.1.2
 Flask-SQLAlchemy==2.4.3
+gunicorn==20.1.0
 idna==2.9
 itsdangerous==1.1.0
 Jinja2==2.11.2

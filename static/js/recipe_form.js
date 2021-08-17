@@ -1,8 +1,6 @@
 "use strict";
 console.log('JS IS WORKING')
 
- // create functions to break this up further?
-
 const addIngredients = document.getElementById("add-ingredients");
 const ingredientInput = document.getElementById("ingredients-input");
 const ingredientsTable = document.getElementById("ingredients-table");
