@@ -3,7 +3,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import requests, os
 
-db_url = os.environ.get("DATABASE", 'postgresql:///breadjournal')
+db_url = os.environ.get("DATABASE_URL", 'postgresql:///breadjournal')
 
 db = SQLAlchemy()
 
