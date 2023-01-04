@@ -54,3 +54,50 @@ Ingredients are in displayed grams, as well as in a graph of dynamically generat
   <img src="https://github.com/idelizer/bread-journal-project/blob/main/static/img/logo.jpg" width="100"/>
 </p>
 
+## 1. Clone repository
+
+  ```
+  cd <directory>
+  git clone https://github.com/idelizer/bread-journal-project.git
+  ```
+    
+## 2. Download prerequisites
+
+  ### 1. Python 3.0.0 or later
+  Check your version of Python with `python --version` or download Python [here](https://www.python.org/downloads/).
+    
+  ### 2. Set up a virtual environment using venv
+  To create a virtual enviroment using venv, run
+  ```
+  python3 -m venv tutorial-env
+  ```
+  To run virtual environment, run
+  ```
+  source tutorial-env/bin/activate
+  ```
+  To deactivate virtual environment when finished using it, run
+  ```
+  deactivate
+  ```
+  You can find documentation on venv [here](https://docs.python.org/3/library/venv.html) as well as Virtual Environments and Packages [here](https://docs.python.org/3/tutorial/venv.html).
+  You can use other virtual enviroments such as [pipenv](https://pipenv.pypa.io/en/latest/install/) or [poetry](https://python-poetry.org/docs/managing-environments/) with minor tweaking. 
+  
+  ### 3. Import configuration file and install packages 
+  While running the virtual environment, run
+  ```
+  pip install -r requirements.txt
+  ```
+    
+## 3. Run in browser
+While running the virtual enviroment, run
+```
+python3 server.py
+```
+
+> Note about error `[Errno 48] Address already in use`: This application uses Port 5000. You can change port of use in bread-journal-project/server.py.
+> ```
+> if __name__ == '__main__':
+>     app.run(host='0.0.0.0', port=os.environ.get("PORT", "5000"), debug=True)
+> ```
+> Or if using MacOS, disable Airplay, as it uses port 5000.
+>> Settings > General > AirDrop & Handoff > toggle AirPlay receiver
