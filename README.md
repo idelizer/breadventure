@@ -63,17 +63,17 @@ Ingredients are in displayed grams, as well as in a graph of dynamically generat
     
 ## 2. Download prerequisites
 
-  ### 1. Python 3.0.0 or later
+  ### 1. Python 3.7.0 or later
   Check your version of Python with `python --version` or download Python [here](https://www.python.org/downloads/).
     
   ### 2. Set up a virtual environment using venv
   To create a virtual enviroment using venv, run
   ```
-  python3 -m venv tutorial-env
+  python3 -m venv .venv
   ```
   To run virtual environment, run
   ```
-  source tutorial-env/bin/activate
+  source .venv/bin/activate
   ```
   To deactivate virtual environment when finished using it, run
   ```
