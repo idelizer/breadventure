@@ -58,7 +58,7 @@ Ingredients are in displayed grams, as well as in a graph of dynamically generat
 
   ```
   cd <directory>
-  git clone https://github.com/idelizer/bread-journal-project.git
+  git clone git@github.com:idelizer/breadventure.git
   ```
     
 ## 2. Download prerequisites
@@ -69,6 +69,7 @@ Ingredients are in displayed grams, as well as in a graph of dynamically generat
   ### 2. Set up a virtual environment using venv
   To create a virtual enviroment using venv, run
   ```
+  cd breadventure
   python3 -m venv .venv
   ```
   To run virtual environment, run
@@ -93,6 +94,7 @@ While running the virtual enviroment, run
 ```
 python3 server.py
 ```
+Control + c to exit server.
 
 > Note about error `[Errno 48] Address already in use`: This application uses Port 5000. You can change port of use in bread-journal-project/server.py.
 > ```
